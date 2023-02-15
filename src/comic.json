@@ -1,0 +1,12 @@
+[{
+  "info": "Feedback vor dem Auftritt. Der Comic soll verdeutlichen, dass Menschen mit einem unterschiedlich ausgeprägten Selbstwert (zu niedrig, adäquat, zu hoch) mit ein und derselben Situation unterschiedlich umgehen und dies sowohl für sie selbst als auch für das Umfeld entsprechende Konsequenzen hat.",
+  "instruction": "Du siehst nun ein Comic, das eine Gruppe von Schülerinnen und Schülern zeigt, die für einen Auftritt üben. Die Geschichte hat drei verschiedene Ausgänge, je nachdem, ob die Hauptfigur einen zu niedrigen, einen passenden oder einen zu hohen Selbstwert hat. Entscheide an den entsprechenden Stellen selbst, wie es weitergeht. ",
+  "question": "Nehmen wir an, XY hat einen zu niedrigen Selbstwert. Wie wird er/sie auf das Feedback der Klassenkolleginnen und Kollegen reagieren? ",
+  "answers": [""]
+},
+  {
+    "question": "Wie glaubst du, kommt das Theaterstück beim Publikum an?",
+    "answers": [""]
+
+  }
+]
