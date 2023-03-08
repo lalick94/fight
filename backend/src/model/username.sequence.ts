@@ -1,7 +1,7 @@
 import {Column, Entity, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
 
 
-@Entity()
+@Entity({ name: "username_seq" })
 export class UsernameSequence {
     @PrimaryColumn()
     public id!: string;
