@@ -4,7 +4,7 @@ class AnswersService {
     static getQuizAnswers(req) {
         const {token} = JSON.parse(localStorage.getItem("token"));
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:3000/quiz/check', req, {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/quiz/check`, req, {
                 headers: {
                     token
                 }
@@ -22,7 +22,7 @@ class AnswersService {
     }
     static getComicAnswers(req) {
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:3000/comic/check', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/comic/check`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data
@@ -36,7 +36,7 @@ class AnswersService {
     }
     static getAusfuellenAnswers(req) {
         return new Promise((resolve, reject) => {
-            axios.post('http://10.0.0.197:3000/ausfuellen/check', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/ausfuellen/check`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data
@@ -50,7 +50,7 @@ class AnswersService {
     }
     static getErinnerungAlarmAnswers(req) {
         return new Promise((resolve, reject) => {
-            axios.post('http://10.0.0.197:3000/erinnerungalarm/check', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/erinnerungalarm/check`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data
@@ -64,7 +64,7 @@ class AnswersService {
     }
     static getZuzuordnen1Answers(req) {
         return new Promise((resolve, reject) => {
-            axios.post('http://10.0.0.197:3000/zuzuordnen1/check', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/zuzuordnen1/check`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data
@@ -78,7 +78,7 @@ class AnswersService {
     }
     static getZuzuordnen2Answers(req) {
         return new Promise((resolve, reject) => {
-            axios.post('http://10.0.0.197:3000/zuzuordnen2/check', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/zuzuordnen2/check`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data

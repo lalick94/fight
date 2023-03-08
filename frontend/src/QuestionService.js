@@ -4,7 +4,7 @@ class QuestionService {
     static getQuizQuestions(category) {
         const {token} = JSON.parse(localStorage.getItem("token"));
         return new Promise((resolve, reject) => {
-            axios.get('http://localhost:3000/quiz/category/' + category, {
+            axios.get(`${process.env.VUE_APP_BACKEND_URL}/quiz/category/${category}`, {
                 headers: {
                     token
                 }
@@ -23,7 +23,7 @@ class QuestionService {
     static getCustomAnswer(questionId) {
         const {token} = JSON.parse(localStorage.getItem("token"));
         return new Promise((resolve, reject) => {
-            axios.get(`http://localhost:3000/quiz/customAnswer?questionId=${questionId}`, {
+            axios.get(`${process.env.VUE_APP_BACKEND_URL}/quiz/customAnswer?questionId=${questionId}`, {
                 headers: {
                     token
                 }

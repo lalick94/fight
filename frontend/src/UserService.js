@@ -3,7 +3,7 @@ import axios from 'axios';
 class UserService {
     static login(req) {
         return new Promise ((resolve,reject) => {
-            axios.post('http://localhost:3000/user/login', req).then((res) => {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/user/login`, req).then((res) => {
                 const data = res.data;
                 resolve(
                     data
@@ -18,7 +18,7 @@ class UserService {
     static getScore() {
         const {token} = JSON.parse(localStorage.getItem("token"));
         return new Promise ((resolve,reject) => {
-            axios.get('http://localhost:3000/user/score', {
+            axios.get(`${process.env.VUE_APP_BACKEND_URL}/user/score`, {
                 headers: {
                     token
                 }
@@ -37,7 +37,7 @@ class UserService {
     static logout(req) {
         const {token} = JSON.parse(localStorage.getItem("token"));
         return new Promise ((resolve,reject) => {
-            axios.post('http://localhost:3000/user/logout', req, {
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/user/logout`, req, {
                 headers: {
                     token
                 }
