@@ -134,7 +134,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz1_selection2_instr">
-                <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
+                <p  class="text_selection" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-selection_2" style="text-align: center" v-if="question.counter === 3">
                   <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ selected: answer.selected }" @click="cardSelected(answer)">
@@ -550,8 +550,8 @@ input[type=text] {
   font-weight: bold;
 }
 .img_selection {
-  width: 320px;
-  height: 370px;
+  width: 335px;
+  height: 465px;
 }
 
 .memory-img{
@@ -787,6 +787,13 @@ button{
   padding: 60px 40px;
   text-align: center;
 }
+.text_selection{
+  color: black;
+  margin: auto;
+  padding-top: 60px;
+  padding-left: 40px;
+  text-align: center;
+}
 .mc-text{
   color: black;
   margin: auto;
@@ -949,6 +956,10 @@ img{
   .text{
     font-size: 20px;
   }
+  .text_selection {
+    font-size: 20px;
+  }
+
   .mc-text{
     font-size: 20px;
   }
@@ -975,6 +986,10 @@ img{
     font-size:26px;
   }
   .text{
+    font-size: 22px;
+    padding: 50px 10px;
+  }
+  .text_selection {
     font-size: 22px;
     padding: 50px 10px;
   }
@@ -1080,6 +1095,10 @@ img{
     font-size: 16px;
     padding: 50px 10px;
   }
+  .text_selection{
+    font-size: 16px;
+    padding: 50px 10px;
+  }
   .mc-text{
     font-size: 16px;
     padding: 50px 10px;
@@ -1146,13 +1165,17 @@ img{
     margin: 0 auto;
   }
   .img_selection_2 {
-    width: 275px;
-    height: 440px;
+    width: 257px;
+    height: 425px;
   }
   .ins {
     font-size: 16px;
   }
   .text {
+    font-size: 16px;
+    padding: 37px 10px;
+  }
+  .text_selection{
     font-size: 16px;
     padding: 37px 10px;
   }
@@ -1246,6 +1269,12 @@ img{
     padding-top: 50px;
     padding-left: 10px;
     padding-bottom: 10px;
+    font-size: 13px;
+  }
+  .text_selection{
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-bottom: 15px;
     font-size: 13px;
   }
   .mc-text{
