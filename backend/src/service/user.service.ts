@@ -72,8 +72,9 @@ export class UserService {
 
     async getScore() {
         const token: IJwtToken = this.contextService.getKey("token");
-        const user: User = await this.repository.findOne({where: {id: token.userId}, relations: {userAnswers: true}});
-        const userAnswers: UserAnswer[] = await this.userAnswerRepository.find({where: {user: user}, relations: {quizAnswer: true}});
+        const user: User = await this.repository.findOne({where: {id: token.userId}});
+        let userAnswers: UserAnswer[] = await this.userAnswerRepository.find({relations: {quizAnswer: true, user: true}});
+        userAnswers = userAnswers.filter(u => u.user.id === token.userId);
         const quizAnswers: QuizAnswer[] = await this.answerRepository.find({where: {id: In(userAnswers.map(u => u.quizAnswer.id))}, relations:{quizQuestion: true}});
         const resp = {};
         const result1 = await this.entityManager.query(`SELECT DISTINCT module_category, question_category FROM quiz_question`, []);
