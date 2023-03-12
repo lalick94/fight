@@ -757,6 +757,7 @@ ul {
   height: 100%;
   left: 0;
   top: 0;
+  overflow: scroll;
 }
 button{
   background-color: #77dd77;
