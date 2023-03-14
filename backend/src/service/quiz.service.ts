@@ -64,9 +64,7 @@ export class QuizService {
         if(!question){
             throw new NotFoundException("Question not found");
         }
-        console.log(question.answers);
         let userAnswer = await this.userAnswerRepository.findOne({where: {quizAnswer: {id: In(question.answers.map(a => a.id))}, user}, relations: {quizAnswer: true, user: true}});
-        console.log(userAnswer);
         const quizAnswer: QuizAnswer = question.answers.find(a => a.id === req.answerId);
         if(!userAnswer || (question.type === QuestionType.DRAG_DROP && userAnswer.quizAnswer.id !== req.answerId )) {
             userAnswer = {
@@ -93,7 +91,9 @@ export class QuizService {
         const token: IJwtToken = this.contextService.getKey("token");
         const question: QuizQuestion = await this.repository.findOne({ where: {id: questionId}, relations: {answers: true} });
         const user: User = await this.userRepository.findOneBy({id: token.userId});
-        const answer: UserAnswer = await this.userAnswerRepository.findOne({ where: { quizAnswer: {id: In(question.answers.map(a => a.id))}, user}, relations: {quizAnswer: true}});
+        console.log(question.answers);
+        const answer: UserAnswer = await this.userAnswerRepository.findOne({ where: { quizAnswer: {id: In(question.answers.map(a => a.id))}, user: { id: user.id }}, relations: {quizAnswer: true}});
+        console.log(answer);
         return {
             userAnswerId: answer.id,
             userAnswer: answer.custom_answer,

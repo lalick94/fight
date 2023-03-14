@@ -885,7 +885,6 @@ a { text-decoration: none; }
   background-color: #DEDEDE;
   text-align: left;
   margin: 0 auto;
-  padding-right: 30px;
   width: 100%;
 }
 
