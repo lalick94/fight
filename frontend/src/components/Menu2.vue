@@ -37,6 +37,7 @@
             <div class="quiz"><p class="modalname"><b>Kognitionen</b></p></div>
           </router-link>
         </div>
+      </div>
         <div class="flex-container" id="flex3">
           <div class="box">
             <router-link :to="{name: 'sozialeunterstuetzung'}">
@@ -48,8 +49,9 @@
               <div class="quiz"><p class="modalname"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
             </router-link>
           </div>
+          <div class="box">
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
