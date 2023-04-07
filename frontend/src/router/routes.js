@@ -75,8 +75,18 @@ export const routes = [
         component: Quiz2
     },
     {
-        path: '/mandala',
-        name: 'mandala',
+        path: '/kognitionen',
+        name: 'kognitionen',
+        component: Quiz2
+    },
+    {
+        path: '/sozialeunterstuetzung',
+        name: 'sozialeunterstuetzung',
+        component: Quiz2
+    },
+    {
+        path: '/erkennen',
+        name: 'erkennen',
         component: Quiz2
     },
 

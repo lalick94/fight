@@ -33,8 +33,18 @@
           </router-link>
         </div>
         <div class="box">
-          <router-link :to="{name: 'mandala'}">
-            <div class="quiz"><p class="modalname"><b>Mandala</b></p></div>
+          <router-link :to="{name: 'kognitionen'}">
+            <div class="quiz"><p class="modalname"><b>Kognitionen</b></p></div>
+          </router-link>
+        </div>
+        <div class="box">
+          <router-link :to="{name: 'sozialeunterstuetzung'}">
+            <div class="quiz"><p class="modalname"><b>Soziale Unterstützung</b></p></div>
+          </router-link>
+        </div>
+        <div class="box">
+          <router-link :to="{name: 'erkennen'}">
+            <div class="quiz"><p class="modalname"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
           </router-link>
         </div>
       </div>
