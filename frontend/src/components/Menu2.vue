@@ -37,15 +37,17 @@
             <div class="quiz"><p class="modalname"><b>Kognitionen</b></p></div>
           </router-link>
         </div>
-        <div class="box">
-          <router-link :to="{name: 'sozialeunterstuetzung'}">
-            <div class="quiz"><p class="modalname"><b>Soziale Unterstützung</b></p></div>
-          </router-link>
-        </div>
-        <div class="box">
-          <router-link :to="{name: 'erkennen'}">
-            <div class="quiz"><p class="modalname"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
-          </router-link>
+        <div class="flex-container" id="flex3">
+          <div class="box">
+            <router-link :to="{name: 'sozialeunterstuetzung'}">
+              <div class="quiz"><p class="modalname"><b>Soziale Unterstützung</b></p></div>
+            </router-link>
+          </div>
+          <div class="box">
+            <router-link :to="{name: 'erkennen'}">
+              <div class="quiz"><p class="modalname"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -79,6 +81,9 @@ export default {
   overflow: scroll;
 }
 #flex2{
+  padding-top:80px;
+}
+#flex3{
   padding-top:80px;
 }
 .menufields{
@@ -157,6 +162,9 @@ a { text-decoration: none; }
   #flex2{
     padding-top: 0px;
   }
+  #flex3{
+    padding-top: 0px;
+  }
 }
 @media (max-width: 414px) {
   .quiz{
@@ -167,6 +175,9 @@ a { text-decoration: none; }
     padding-top: 65px;
   }
   #flex2{
+    padding-top: 0px;
+  }
+  #flex3{
     padding-top: 0px;
   }
   .modalname{
