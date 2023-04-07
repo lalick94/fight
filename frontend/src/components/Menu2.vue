@@ -87,6 +87,7 @@ export default {
 }
 #flex3{
   padding-top:80px;
+  margin-bottom: 200px;
 }
 .menufields{
   text-align: center;
