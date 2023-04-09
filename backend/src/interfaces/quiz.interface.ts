@@ -9,6 +9,8 @@ export interface IQuestionResponseDto {
     answers: IAnswersResponse[];
     type: QuestionType;
     instruction_image: string;
+    drag_drop_false: string;
+    drag_drop_true: string;
     question_image: string;
     question_category: string;
     module_category: string;
@@ -23,6 +25,7 @@ export interface IAnswersResponse {
 export interface ICheckAnswerRequestDto {
     questionId: number;
     answerId: number;
+    dragDropAnswer: boolean;
     customAnswer: string;
 }
 

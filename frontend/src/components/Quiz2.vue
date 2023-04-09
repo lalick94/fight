@@ -39,33 +39,26 @@
                   </li>
                 </ul>
               </div>
-              <div v-if="question.type === 'DRAG_DROP'">
-                <div v-if="question.counter === 3" class="drag-drop">
-                  <div class="drag_answers"
-                       v-for="(answer, idx) in question.answers"
-                       v-bind:item="answer"
-                       v-bind:index="idx"
-                       v-bind:key="'answer'+ page + idx"
-                       @click="checkAnswer(answer)" >
-                    <div v-if="dragDropShowAll ? true : idx >= dragDropPage * 5 && idx < (dragDropPage * 5) + 5"
-                         draggable="true"
-                         class="answers-box"
-                         v-bind:style="answer.clicked ? 'background-color: green;' : ''"
-                         @click="selectDragDropAnswer(answer)" >
-                      {{ answer.answer }}
+              <div v-if="question.type === 'DRAG_DROP_2'">
+                <div v-if="question.counter === 3 && question.question" class="drag-drop">
+                  <div class="drag-drop">
+                    <div class="drag_answers">
+                      <div class="answers-box">
+                        {{question.question}}
+                      </div>
+
                     </div>
                   </div>
-                  <div class="drag_drop_controls">
-                    <a @click="dragDropPrevious()">left</a>
-                    <a @click="dragDropNext()">right</a>
-                  </div>
                 </div>
-                <!--                <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
-                                <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>-->
-                <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
-                <img v-bind:src="`images/assets/${question.image}`" v-if="question.image && question.counter === 2" class="image_quiz2">
-                <p style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
-                <img v-bind:src="`images/assets/${question.image}_${dragDropImgIndex}.jpeg`" v-if="question.image && question.counter === 3" @dragover="dragOverImg($event)" @drop="dropAnswer($event)" >
+
+                <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
+                <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
+                <div class="drag-rucksack"  v-if="question.counter === 3">
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${question.drag_drop_false}.png`" @click="answerDragDrop('false')" >
+                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.drag_drop_true}.png`" @click="answerDragDrop('true')" >
+                </div>
               </div>
               <div v-if="question.type === 'SELECTION_2'">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
@@ -274,6 +267,10 @@ export default {
     }
   },
   methods:{
+    answerDragDrop(answer) {
+      const a = this.quizQuestions[this.page].answers.find(a => a.answer === answer);
+      this.pageIncrease(a);
+    },
     changeSelection2Image(idx) {
       this.selection2CurrentIdx = idx;
     },
@@ -345,7 +342,7 @@ export default {
       console.log("test");
       this.dragDropImgIndex = 2;
     },
-    async pageIncrease(){
+    async pageIncrease(dragDropAnswer){
       const question = this.quizQuestions[this.page];
       if((question.type === 'INPUT_FIELD' || question.type === 'SLIDER' || question.type === 'TIMER') && question.counter === 3){
         if(question.answers && question.answers.length) {
@@ -363,6 +360,9 @@ export default {
         if(question.answers && question.answers.length && question.answers.some(a => a.selected)) {
           await this.checkAnswer(question.answers.filter(a => a.selected)[0]);
         }
+      }
+      if(question.type === 'DRAG_DROP_2' && question.counter === 3){
+        await this.checkAnswer(dragDropAnswer);
       }
       if(question.counter !== question.subpages){
         question.counter++;
@@ -397,11 +397,12 @@ export default {
         }
       }
     },
-    async checkAnswer(answer) {
+    async checkAnswer(answer, dragDropAnswer) {
       const a = {
         answerId: answer.id,
         questionId: this.quizQuestions[this.page].id,
         customAnswer: this.quizQuestions[this.page].customAnswer,
+        dragDropAnswer,
       };
       const res = await AnswersService.getQuizAnswers(a);
       if(res.result){

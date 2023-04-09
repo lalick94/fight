@@ -39,6 +39,8 @@ export class QuizService {
                 instruction: q.instruction,
                 explanation: q.explanation,
                 info: q.info,
+                drag_drop_false: q.drag_drop_false,
+                drag_drop_true: q.drag_drop_true,
                 instruction_image: q.instruction_image,
                 question_image: q.question_image,
                 left_slider: q.left_slider,
@@ -79,7 +81,7 @@ export class QuizService {
         await this.userAnswerRepository.save(userAnswer);
         if(question.type === QuestionType.INPUT_FIELD) {
             return {};
-        } else if (question.type === QuestionType.MC) {
+        } else if (question.type === QuestionType.MC || question.type === QuestionType.DRAG_DROP_2) {
             return {
                 result: question.answers.some(a => a.id === req.answerId && a.isCorrect),
                 answers: question.answers.filter(a => a.isCorrect).map(a => a.id),

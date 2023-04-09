@@ -10,6 +10,7 @@ export enum QuestionType {
     ALARM='ALARM',
     ALARM_DRAG_DROP='ALARM_DRAG_DROP',
     SELECTION_2='SELECTION_2',
-    LESEN='LESEN'
+    LESEN='LESEN',
+    DRAG_DROP_2 = 'DRAG_DROP_2'
 
 }
