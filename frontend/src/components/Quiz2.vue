@@ -46,11 +46,9 @@
                       <div class="answers-box">
                         {{question.question}}
                       </div>
-
                     </div>
                   </div>
                 </div>
-
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
