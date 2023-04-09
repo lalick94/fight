@@ -167,7 +167,6 @@
                       <div class="answers-box">
                         {{question.question}}
                       </div>
-
                     </div>
                   </div>
                 </div>
