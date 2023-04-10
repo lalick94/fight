@@ -17,12 +17,12 @@
               <div style="text-align: center;" class="button-section" >
                 <div>
                   <router-link :to="{name: 'menu'}">
-                  <button class="toolbar-btn" v-bind:style="isMenu ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu ? '' : 'color: #686868;'">Grundmodul</h2></button>
+                  <button class="toolbar-btn" v-bind:style="isMenu ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu ? '' : 'color: #0b3a19;'">Grundmodul</h2></button>
                     </router-link>
                 </div>
                 <div style="padding-top: 50px;">
                   <router-link :to="{name: 'vertiefungsmenu'}">
-                  <button class="toolbar-btn" @click="setModuleClicked()"  v-bind:style="isMenu2 ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu2 ? '' : 'color: #686868;'">Vertiefungsmodul</h2></button>
+                  <button class="toolbar-btn" @click="setModuleClicked()"  v-bind:style="isMenu2 ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu2 ? '' : 'color: #0b3a19;'">Vertiefungsmodul</h2></button>
                   </router-link>
                 </div>
               </div>
