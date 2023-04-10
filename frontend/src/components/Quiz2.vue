@@ -58,6 +58,40 @@
                   <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.drag_drop_true}.png`" @click="answerDragDrop('true')" >
                 </div>
               </div>
+              <div v-if="question.type === 'LESEN'">
+                <div v-if="question.counter === 3 && question.question" class="drag-drop">
+                  <div class="drag-drop">
+                    <div class="drag_answers">
+                      <div class="answers-box">
+                        {{question.question}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
+                <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
+              </div>
+              <div v-if="question.type === 'DRAG_DROP'">
+                <div v-if="question.counter === 3 && question.question" class="drag-drop">
+                  <div class="drag-drop">
+                    <div class="drag_answers">
+                      <div class="answers-box">
+                        {{question.question}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
+                <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
+                <div class="drag-rucksack"  v-if="question.counter === 3">
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${question.drag_drop_false}.png`" @click="answerDragDrop('false')" >
+                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.drag_drop_true}.png`" @click="answerDragDrop('true')" >
+                </div>
+              </div>
               <div v-if="question.type === 'SELECTION_2'">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
@@ -153,29 +187,6 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
                 <p v-if="question.counter === 3" class="timer-counter">You have <span style="color:#ff6961; font-weight: bold;"> {{time}} </span> seconds</p>
                 <img v-bind:src="`images/assets/${question.question_image}.png`" v-if="question.question_image && question.counter === 3" class="image_quiz2_timer">
-              </div>
-              <div v-if="question.type === 'DRAG_DROP'">
-                <div v-if="question.counter === 3 && question.question" class="drag-drop">
-                  <div class="drag-drop">
-                    <div class="drag_answers"
-                         v-for="(answer, idx) in question.answers"
-                         v-bind:item="answer"
-                         v-bind:index="idx"
-                         v-bind:key="'answer'+ page + idx" >
-                      <div class="answers-box">
-                        {{question.question}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
-                <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
-                <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
-                <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
-                <div class="drag-rucksack">
-                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.GIF`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
-                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image}_${dragDropImgIndex}.png`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
-                </div>
               </div>
               <div v-if="question.type === 'MEMORY'">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
@@ -354,7 +365,7 @@ export default {
     },
     async pageIncrease(dragDropAnswer){
       const question = this.quizQuestions[this.page];
-      if((question.type === 'INPUT_FIELD' || question.type === 'SLIDER' || question.type === 'TIMER') && question.counter === 3){
+      if((question.type === 'INPUT_FIELD' || question.type === 'SLIDER' || question.type === 'TIMER' || question.type === 'LESEN') && question.counter === 3){
         if(question.answers && question.answers.length) {
           await this.checkAnswer({
             id: question.answers[0].id,
