@@ -15,24 +15,24 @@
         </div>
         <div class="box">
           <router-link :to="{name: 'zuzuordnen1'}">
-          <div class="quiz"><p><b>Zuzuordnen 1</b></p></div>
+          <div class="quiz"><p><b>Innen oder Außen?</b></p></div>
           </router-link>
         </div>
       </div>
       <div class="flex-container" id="flex2">
         <div class="box">
           <router-link :to="{name: 'zuzuordnen2'}">
-          <div class="quiz"><p><b>Zuzuordnen 2</b></p></div>
+          <div class="quiz"><p><b>Glaubenssätze</b></p></div>
           </router-link>
         </div>
         <div class="box">
           <router-link :to="{name: 'erinnerungalarm'}">
-          <div class="quiz"><p><b>Erinnerung Alarm</b></p></div>
+          <div class="quiz"><p><b>Selbstinstruktionen</b></p></div>
           </router-link>
         </div>
         <div class="box">
           <router-link :to="{name: 'ausfuellen'}">
-          <div class="quiz"><p><b>Ausfüllen</b></p></div>
+          <div class="quiz"><p><b>Eine Frage des Vergleichs</b></p></div>
           </router-link>
         </div>
       </div>

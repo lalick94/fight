@@ -5,12 +5,12 @@
       <div class="flex-container">
         <div class="box">
           <router-link :to="{name: 'question'}">
-            <div class="quiz" onclick=""><p class="modalname"><b>Question</b></p></div>
+            <div class="quiz" onclick=""><p class="modalname"><b>Mein Körper</b></p></div>
           </router-link>
         </div>
         <div class="box">
           <router-link :to="{name: 'memory'}">
-            <div class="quiz"><p class="modalname"><b>Memory</b></p></div>
+            <div class="quiz"><p class="modalname"><b>Body Memory</b></p></div>
           </router-link>
         </div>
         <div class="box">
@@ -23,7 +23,7 @@
         <div class="box">
           <router-link :to="{name: 'uebungmittimer'}">
             <div class="quiz"><p class="modalname"><b>
-              Übung mit Timer
+              Körperhaltungen
             </b></p></div>
           </router-link>
         </div>

@@ -148,7 +148,7 @@
                 <p class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text_question_instruction" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_inputfield_instruction">
-                <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
+                <p  class="text" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
                 <div class="answer-list" style="text-align: center;" v-if="question.counter === 3">
                   <img v-if="question.dependingCustomAnswer && question.dependingCustomAnswer.image" v-bind:src="`images/assets/${question.dependingCustomAnswer.image}`" class="input-field-image">
                   <textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea>
