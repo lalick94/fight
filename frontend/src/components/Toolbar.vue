@@ -17,12 +17,12 @@
               <div style="text-align: center;" class="button-section" >
                 <div>
                   <router-link :to="{name: 'menu'}">
-                  <button class="toolbar-btn" v-bind:style="isMenu ? '' : 'background-color: #A0A0A0; border: #A0A0A0;'"><h2 v-bind:style="isMenu ? '' : 'color: #686868;'">Grundmodul</h2></button>
+                  <button class="toolbar-btn" v-bind:style="isMenu ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu ? '' : 'color: #686868;'">Grundmodul</h2></button>
                     </router-link>
                 </div>
                 <div style="padding-top: 50px;">
                   <router-link :to="{name: 'vertiefungsmenu'}">
-                  <button class="toolbar-btn" @click="setModuleClicked()"  v-bind:style="isMenu2 ? '' : 'background-color: #A0A0A0; border: #A0A0A0;'"><h2 v-bind:style="isMenu2 ? '' : 'color: #686868;'">Vertiefungsmodul</h2></button>
+                  <button class="toolbar-btn" @click="setModuleClicked()"  v-bind:style="isMenu2 ? '' : 'background-color: #fde396; border: #fde396;'"><h2 v-bind:style="isMenu2 ? '' : 'color: #686868;'">Vertiefungsmodul</h2></button>
                   </router-link>
                 </div>
               </div>
@@ -194,8 +194,8 @@ export default {
   left:460px;
 }
 .toolbar-btn{
-  background: #fde396;
-  border:4px solid #fde396;
+  background: #F4D03F;
+  border:4px solid #F4D03F;
   border-radius: 10px;
   color:  #0B3A19;
   padding: 12px 16px;
@@ -204,7 +204,7 @@ export default {
   width: 400px;
 }
 .toolbar-btn:hover {
-  background-color:  #F4D03F;
+  background-color:  #fde396;
 }
 .button-section {
   display: flex;
