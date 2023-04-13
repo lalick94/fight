@@ -198,6 +198,9 @@ a { text-decoration: none; }
   .selbst-modalname{
     padding-top: 40px;
   }
+  #flex3{
+    margin-bottom: 0px;
+  }
 }
 
 </style>

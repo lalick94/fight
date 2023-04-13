@@ -95,7 +95,6 @@
                           <div class="answers-box">
                             {{question.question}}
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -105,8 +104,8 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                 <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
                 <div class="drag-rucksack">
-                <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.GIF`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
-                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image}_${dragDropImgIndex}.png`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
+                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image}_${dragDropImgIndex}.png`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
                 </div>
               </div>
               <div v-if="question.type === 'SELECTION'">
@@ -183,7 +182,6 @@
                   <div>
                   <input type="range" step="1" min="1" max="10" v-model="question.customAnswer" class="slider" id="myRange" style="">
                   </div>
-                  <!--                  <span>{{question.customAnswer}}</span>-->
                 </div>
                 <div class="image_quiz_slider" v-if="question.question_image && question.counter === 3" >
                   <img v-bind:src="`images/assets/${quizQuestions.find(q => q.id === question.dependingQuestionId).question_image}`" v-if="question.dependingCustomAnswer" v-bind:height="50 * question.dependingCustomAnswer" v-bind:width="20 * question.dependingCustomAnswer" class="image_quiz_slider_init">
