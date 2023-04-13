@@ -651,9 +651,6 @@ p{
   font-family: Arial;
   color:black;
 }
-button{
-  width: 500px;
-}
 .text{
   /*padding: 50px;*/
   color: black;
