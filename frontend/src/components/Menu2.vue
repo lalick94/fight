@@ -46,7 +46,7 @@
           </div>
           <div class="box">
             <router-link :to="{name: 'erkennen'}">
-              <div class="quiz"><p class="modalname"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
+              <div class="quiz"><p class="modalname_erkennen"><b>Erkennen von & Umgang</b> <br><b> mit Emotionen</b></p></div>
             </router-link>
           </div>
           <div class="box">
@@ -127,6 +127,12 @@ button{
   font-family: Arial;
   color: #0B3A19;
 }
+.modalname_erkennen{
+  padding-top: 50px;
+  font-size: 30px;
+  font-family: Arial;
+  color: #0B3A19;
+}
 .selbst-modalname{
   padding-top: 60px;
   font-size: 30px;
@@ -185,6 +191,9 @@ a { text-decoration: none; }
   }
   .modalname{
     padding-top: 50px;
+  }
+  .modalname_erkennen{
+    padding-top: 10px;
   }
   .selbst-modalname{
     padding-top: 40px;

@@ -41,7 +41,7 @@
               </div>
               <div v-if="question.type === 'DRAG_DROP_2'">
                 <div v-if="question.counter === 3 && question.question" class="drag-drop">
-                  <div class="drag-drop">
+                  <div class="drag-drop" style="margin: 0 auto;">
                     <div class="drag_answers">
                       <div class="answers-box">
                         {{question.question}}
@@ -61,8 +61,8 @@
               <div v-if="question.type === 'LESEN'">
                 <div v-if="question.counter === 3 && question.question" class="drag-drop">
                   <div class="drag-drop">
-                    <div class="drag_answers">
-                      <div class="answers-box">
+                    <div class="lesen_answers">
+                      <div class="answers-lesen-box">
                         {{question.question}}
                       </div>
                     </div>
@@ -560,6 +560,13 @@ color:  #ff6961;
   font-size: 20px;
   padding: 5px;
 }
+.answers-lesen-box{
+  width: 100% ;
+  font-size: 20px;
+  padding: 5px;
+  font-weight: bold;
+  color:  #ff6961;
+}
 .input-field-image{
   display:inline;
   float: left;
@@ -599,6 +606,11 @@ ul {
 }
 .drag_answers {
   padding-left: 20px;
+  padding-top: 20px;
+  font-size:30px;
+  color: black;
+}
+.lesen_answers{
   padding-top: 20px;
   font-size:30px;
   color: black;
