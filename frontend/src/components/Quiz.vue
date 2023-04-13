@@ -480,10 +480,13 @@ input[type=text] {
   margin: 4px 2px;
   cursor: pointer;
 }
-.button1 {background-color: #84d084;} /* Green */
+.button1 {
+  background-color: #84d084;
+  width: 145px !important;
+}
 .but_input{
   width: 145px;
-  margin: 0 auto
+  margin: 0 auto;
 }
 .slider {
   -webkit-appearance: none;
