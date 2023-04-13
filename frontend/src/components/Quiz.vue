@@ -170,7 +170,7 @@
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-input" style="display:flex;flex-direction: column;margin: 0 auto;" v-if="question.counter === 3">
                   <div><textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea> </div>
-                <div style="width: 145px;">  <button class="button button1" v-if="question.counter === 3">Abschicken </button> </div>
+                <div style="width: 145px;margin: 0 auto;">  <button class="button button1" v-if="question.counter === 3">Abschicken </button> </div>
                 </div>
               </div>
               <div style="display:flex; flex-direction: column;" v-if="question.type === 'SLIDER'">
