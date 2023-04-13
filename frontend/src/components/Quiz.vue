@@ -172,6 +172,7 @@
                   <textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea>
                   <br><br>
                 </div>
+                <button class="button button1">Abschicken</button>
               </div>
               <div style="display:flex; flex-direction: column;" v-if="question.type === 'SLIDER'">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
@@ -469,6 +470,18 @@ input[type=text] {
 .menu-header{
   text-align: right;
 }
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {background-color: #84d084;} /* Green */
 
 .slider {
   -webkit-appearance: none;
