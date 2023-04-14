@@ -6,6 +6,7 @@ export enum QuestionType {
     FEEDBACK='FEEDBACK',
     SLIDER='SLIDER',
     MEMORY='MEMORY',
+    MEMORY_2='MEMORY_2',
     TIMER='TIMER',
     ALARM='ALARM',
     ALARM_DRAG_DROP='ALARM_DRAG_DROP',
