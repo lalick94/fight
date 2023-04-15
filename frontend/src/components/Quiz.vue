@@ -102,8 +102,8 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
-               <div class="drag-rucksack" v-if="question.instruction_image && question.counter === 2">
-                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" >
+               <div class="drag-rucksack-instr" v-if="question.instruction_image && question.counter === 2">
+                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.gif`" v-if="question.instruction_image && question.counter === 2" >
                   <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.instruction_image && question.counter === 2">
                 </div>
                 <div class="drag-rucksack">
@@ -445,6 +445,12 @@ input[type=text] {
 }
 .drag-rucksack{
   padding-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 550px;
+  margin: auto;
+}
+.drag-rucksack-instr{
   display: flex;
   justify-content: space-between;
   max-width: 550px;
@@ -1223,6 +1229,10 @@ img{
     max-width: 330px;
     padding-top: 70px;
   }
+  .drag-rucksack-instr{
+    max-width: 330px;
+    padding-top: 20px;
+  }
   .image_quiz_q_dragdrop{
     height: 130px;
     width: 150px;
@@ -1328,6 +1338,10 @@ img{
   .drag-rucksack{
     max-width: 288px;
     padding-top: 70px;
+  }
+  .drag-rucksack-instr{
+    max-width: 288px;
+    padding-top: 20px;
   }
   .image_quiz1_selection2_instr{
     height: 245px;
