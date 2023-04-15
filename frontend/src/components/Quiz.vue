@@ -81,7 +81,7 @@
                 <img class="image_quiz_uhr_dragdrop"  v-bind:src="`images/assets/uhr_${question.dependingCustomAnswer}.png`" v-if="question.counter === 2 && question.dependingCustomAnswer" />
                 <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
                 <div class="drag-rucksack-alarm">
-                <img class="image_quiz_q_dragdrop_rucksack_alarm" v-bind:src="`images/assets/rucksack.GIF`" v-if="question.counter === 3" @click="answerDragDropAlarm()" >
+                <img class="image_quiz_q_dragdrop_rucksack_alarm" v-bind:src="`images/assets/rucksack.png`" v-if="question.counter === 3" @click="answerDragDropAlarm()" >
                 </div>
               </div>
               <div v-if="question.type === 'DRAG_DROP'">

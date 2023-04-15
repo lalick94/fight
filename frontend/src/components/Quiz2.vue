@@ -525,6 +525,23 @@ export default {
   background: #04AA6D;
   cursor: pointer;
 }
+.image_quiz_q_dragdrop{
+  height: 250px;
+  width: 270px;
+  margin: auto;
+}
+.image_quiz_q_dragdrop_rucksack{
+  height: 250px;
+  width: 270px;
+  margin: auto;
+}
+.drag-rucksack{
+  padding-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 550px;
+  margin: auto;
+}
 #img_slc{
   margin-left: 40px;
   margin-top: 30px;
@@ -1106,6 +1123,19 @@ a { text-decoration: none; }
   }
 }
 @media only screen and (max-width: 500px) {
+  .drag-rucksack{
+    max-width: 330px;
+    padding-top: 70px;
+  }
+  .image_quiz_q_dragdrop{
+    height: 130px;
+    width: 150px;
+  }
+  .image_quiz_q_dragdrop_rucksack{
+    height: 130px;
+    width: 170px;
+    margin-left: 0px;
+  }
   .answer-list-selection-2{
     display: block;
     padding-left: 0px;
@@ -1225,8 +1255,20 @@ a { text-decoration: none; }
   }
 }
 @media screen and (max-width: 393px) {
+  .image_quiz_q_dragdrop{
+    height: 123px;
+    width: 141px;
+  }
+  .image_quiz_q_dragdrop_rucksack{
+    height: 123px;
+    width: 155px;
+  }
   .answer-list-memory{
     padding-top: 50px;
+  }
+  .drag-rucksack{
+    max-width: 288px;
+    padding-top: 70px;
   }
   .memory-img{
     width: 82px;
