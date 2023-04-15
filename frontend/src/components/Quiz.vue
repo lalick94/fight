@@ -102,7 +102,10 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1" v-html="question.info"></p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
-                <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
+                <div class="drag-rucksack" v-if="question.instruction_image && question.counter === 2">
+                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.instruction_image && question.counter === 2">
+                </div>
                 <div class="drag-rucksack">
                   <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image}_${dragDropImgIndex}.png`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
                   <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
