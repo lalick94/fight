@@ -931,7 +931,7 @@ img{
 }
 .image_quiz_q_dragdrop{
   height: 250px;
-  width: 270px;
+  width: 300px;
   margin: auto;
 }
 .image_quiz_q_dragdrop_rucksack{
