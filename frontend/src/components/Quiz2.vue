@@ -165,7 +165,7 @@
                   <input type="range" min="1" max="100" class="slider" id="myRange" v-model="question.customAnswer">
                 </div>
                 <div class="image_quiz_slider" v-if=" question.counter === 3" id="toptext"><p style="padding-left: 10px;">{{question.left_slider}}</p>
-<p style="color: #ff6961;">{{quizQuestions.find(q => q.id === question.dependingQuestionId).answers.find(a => a.selected).answer}}</p>  <p style="padding-right: 10px;">{{question.right_slider}}</p>
+              <p style="color: #ff6961;">{{quizQuestions.find(q => q.id === question.dependingQuestionId).answers.find(a => a.selected).answer}}</p>  <p style="padding-right: 10px;">{{question.right_slider}}</p>
                 </div>
               </div>
               <div v-if="question.type === 'FEEDBACK'">

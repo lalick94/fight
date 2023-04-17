@@ -103,7 +103,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                <div class="drag-rucksack-instr" v-if="question.instruction_image && question.counter === 2">
-                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}`" v-if="question.instruction_image && question.counter === 2" >
+                <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.instruction_image.replace('$', dragDropImgIndex)}`" v-if="question.instruction_image && question.counter === 2" >
                   <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.instruction_image && question.counter === 2">
                 </div>
                 <div class="drag-rucksack">
@@ -185,6 +185,10 @@
                   <div>
                   <input type="range" step="1" min="1" max="10" v-model="question.customAnswer" class="slider" id="myRange" style="">
                   </div>
+                </div>
+                <div class="image_quiz_slider" v-if="question.left_slider && question.counter === 3" id="toptext">
+                  <p style="padding-left: 10px;width:50%;text-align:left;">{{question.left_slider}}</p>
+                  <p style="padding-right: 10px;width:50%;text-align: right;">{{question.right_slider}}</p>
                 </div>
                 <div class="image_quiz_slider" v-if="question.question_image && question.counter === 3" >
                   <img v-bind:src="`images/assets/${quizQuestions.find(q => q.id === question.dependingQuestionId).question_image}`" v-if="question.dependingCustomAnswer" v-bind:height="50 * question.dependingCustomAnswer" v-bind:width="20 * question.dependingCustomAnswer" class="image_quiz_slider_init">
@@ -288,7 +292,7 @@ export default {
       }
       this.quizQuestions[this.page].customAnswer = answer;
       new Promise(resolve => {
-        setTimeout(resolve, 2000);
+        setTimeout(resolve, 500);
       }).then(() =>  {
         this.pageIncrease();
         this.dragDropImgIndex = 1;
@@ -310,7 +314,7 @@ export default {
       console.log("Answer selected");
       this.dragDropImgIndex = 2;
       new Promise(resolve => {
-        setTimeout(resolve, 2000);
+        setTimeout(resolve, 500);
       }).then(() => this.dragDropImgIndex = 1);
       answer.clicked = answer.clicked === undefined ? true : !answer.clicked;
     },

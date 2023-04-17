@@ -21,6 +21,11 @@ export class QuizController {
     return this.quizService.getQuestions();
   }
 
+  @Get('/answered')
+  async getAnsweredQuestions(@Query('questionCategory') questionCategory: QuestionCategory): Promise<IQuestionResponseDto[]> {
+    return this.quizService.getAnsweredQuestions(questionCategory);
+  }
+
   @Get('/customAnswer')
   async getCustomAnswer(@Query('questionId') questionId: number): Promise<IUserAnswerResponseDto> {
     return this.quizService.getCustomAnswer(questionId);

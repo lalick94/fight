@@ -102,4 +102,24 @@ export class QuizService {
             image: answer.quizAnswer.image
         };
     }
+
+    async getAnsweredQuestions(question_category: QuestionCategory) {
+        const token: IJwtToken = this.contextService.getKey("token");
+        const questions: QuizQuestion[] = await this.repository.find({ where: { question_category }, relations: { answers: true, parent: true }, order: { id: 'ASC'}});
+        const result = [];
+        const user: User = await this.userRepository.findOneBy({id: token.userId});
+        for(let question of questions) {
+            const answer: UserAnswer = await this.userAnswerRepository.findOne({
+                where: {
+                    quizAnswer: {id: In(question.answers.map(a => a.id))},
+                    user: {id: user.id}
+                }, relations: {quizAnswer: true}
+            });
+            if(answer.quizAnswer.isCorrect){
+                result.push(question);
+            }
+        }
+
+        return result;
+    }
 }
