@@ -115,7 +115,7 @@ export class QuizService {
                     user: {id: user.id}
                 }, relations: {quizAnswer: true}
             });
-            if(answer.quizAnswer.isCorrect){
+            if(answer?.quizAnswer?.isCorrect){
                 result.push(question);
             }
         }
