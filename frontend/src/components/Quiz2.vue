@@ -96,6 +96,11 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
+                <div v-if="question.counter === 2 && question.question_category === 'KOGNITIONEN'" style="text-align: left; padding: 0px 40px;color:#ff6961;">
+                  <div v-for="(answerQuestion, idx) in question.answered" v-bind:key="idx">
+                    <p style="color:#ff6961;">{{answerQuestion.question}}</p>
+                  </div>
+                </div>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_selection2_instruction">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
@@ -295,6 +300,9 @@ export default {
     changeSelection2Image(idx) {
       this.selection2CurrentIdx = idx;
     },
+    getAnsweredQuestions(questionCategory) {
+      return QuestionService.getAnsweredQuestion(questionCategory);
+    },
     getTimer(deadline) {
       const time = Date.parse(deadline) - Date.now();
       return {
@@ -394,7 +402,9 @@ export default {
         this.page++;
         if(this.quizQuestions[this.page].dependingQuestionId){
           this.quizQuestions[this.page].dependingCustomAnswer = await this.getCustomAnswer(this.quizQuestions[this.page].dependingQuestionId);
-          console.log(this.quizQuestions[this.page]);
+        }
+        if(this.quizQuestions[this.page].type === 'SELECTION_2' && this.quizQuestions[this.page].question_category === 'KOGNITIONEN'){
+          this.quizQuestions[this.page].answered = await this.getAnsweredQuestions('KOGNITIONEN');
         }
       }
     },

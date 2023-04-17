@@ -39,6 +39,25 @@ class QuestionService {
 
         });
     }
+    static getAnsweredQuestion(question_category) {
+        const {token} = JSON.parse(localStorage.getItem("token"));
+        return new Promise((resolve, reject) => {
+            axios.get(`${process.env.VUE_APP_BACKEND_URL}/quiz/answered?questionCategory=${question_category}`, {
+                headers: {
+                    token
+                }
+            }).then((res) => {
+                const data = res.data;
+                resolve(
+                    data
+                );
+            })
+                .catch((err) => {
+                    reject(err);
+                })
+
+        });
+    }
 }
 
 
