@@ -275,7 +275,10 @@ export default {
   },
   methods:{
     handleClick() {
-      this.active = !this.active;
+      setTimeout(() => {
+        this.active = !this.active;
+      }, 500);
+      this.active = true;
     },
     changeSelection2Image(idx) {
       this.selection2CurrentIdx = idx;
