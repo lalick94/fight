@@ -1364,8 +1364,8 @@ img{
 }
 @media screen and (max-width: 375px) {
   .image_quiz_mc{
-    height: 210px;
-    width: 175px;
+    height: 166px;
+    width: 132px;
     padding-top: 0px;
   }
   .image_quiz1_selection2_instr{

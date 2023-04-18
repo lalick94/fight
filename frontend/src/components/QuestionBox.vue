@@ -170,6 +170,7 @@ height: 790px;
   }
   .comic-field{
     padding-top: 25px;
+    padding-bottom: 25px;
   }
   .comic-box{
     height: 695px;
@@ -183,8 +184,9 @@ height: 790px;
 }
 @media screen and (max-width: 375px) {
   .comic-box{
-    height: 480px;
+    height: 558px;
   }
+
 }
 
 @media screen and (max-width: 360px) {
