@@ -295,7 +295,10 @@ export default {
   },
   methods:{
     handleClick() {
-      this.active = !this.active;
+      setTimeout(() => {
+        this.active = !this.active;
+      }, 500);
+      this.active = true;
     },
     answerDragDrop(answer) {
       const a = this.quizQuestions[this.page].answers.find(a => a.answer === answer);
