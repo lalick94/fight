@@ -1239,7 +1239,7 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 414px) {
   .ins {
-    font-size: 13px;
+    font-size: 15px;
   }
   .image_quiz2_timer{
     height: 350px;
@@ -1298,7 +1298,7 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 375px) {
   .text{
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 16px;
     padding-top: 40px;
     padding-bottom: 10px;
@@ -1307,7 +1307,7 @@ a { text-decoration: none; }
      padding-top: 0px;
    }
   .text_question_instruction{
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 16px;
     padding-top: 40px;
     padding-bottom: 25px;
@@ -1326,17 +1326,17 @@ a { text-decoration: none; }
     height: 245px;
   }
   .Answer{
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 15px;
     padding-bottom: 30px;
   }
   .Answer__correct{
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 15px;
     padding-bottom: 30px;
   }
   .Answer__wrong{
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 20px;
     padding-bottom: 30px;
   }

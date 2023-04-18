@@ -1274,20 +1274,20 @@ img{
 }
 @media screen and (max-width: 393px) {
  .ins{
-   font-size: 13px;
+   font-size: 15px;
  }
 .Answer{
-  font-size: 13px;
+  font-size: 15px;
   padding-left: 15px;
   padding-bottom: 30px;
 }
 .Answer__correct{
-  font-size: 13px;
+  font-size: 15px;
   padding-left: 15px;
   padding-bottom: 30px;
 }
 .Answer__wrong{
-  font-size: 13px;
+  font-size: 15px;
   padding-left: 20px;
   padding-bottom: 30px;
 }
@@ -1298,16 +1298,16 @@ img{
     padding-top: 50px;
     padding-left: 10px;
     padding-bottom: 10px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .text_selection{
     padding-top: 50px;
     padding-left: 10px;
     padding-bottom: 15px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .mc-text{
-    font-size: 13px;
+    font-size: 15px;
     padding-top: 50px;
     padding-left: 10px;
     padding-bottom: 20px;
