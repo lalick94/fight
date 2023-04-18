@@ -193,7 +193,7 @@
                 <p v-if="question.counter === 3" class="timer-counter">You have <span style="color:#ff6961; font-weight: bold;"> {{time}} </span> seconds</p>
                 <img v-bind:src="`images/assets/${question.question_image}.png`" v-if="question.question_image && question.counter === 3" class="image_quiz2_timer">
               </div>
-              <div v-if="question.type === 'MEMORY'">
+              <div v-if="question.type.startsWith('MEMORY')">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
@@ -286,9 +286,12 @@ export default {
           subpages: count,
           counter: start,
           start,
-          answers: q.type === 'MEMORY' ? _.shuffle([..._.cloneDeep(memoryAnswrs), ..._.cloneDeep(memoryAnswrs)]) : q.answers,
+          answers: q.type === 'MEMORY' ? _.shuffle([..._.cloneDeep(memoryAnswrs), ..._.cloneDeep(memoryAnswrs)])
+              : q.type === 'MEMORY_2' ?  _.shuffle([...memoryAnswrs.map(a => ({...a, image: a.image.replace('$', '1')})), ...memoryAnswrs.map(a => ({...a, image: a.image.replace('$', '2')}))])
+                  : q.answers,
         };
       });
+      console.log(this.quizQuestions);
     } catch(err) {
       console.log("Error getting questions");
     }
@@ -387,7 +390,7 @@ export default {
           });
         }
       }
-      if(this.quizQuestions[this.page].type === 'MEMORY') {
+      if(this.quizQuestions[this.page].type.startsWith('MEMORY')) {
         if(this.quizQuestions[this.page].answers.every(a => a.isMatch)) {
           this.progress += 100 / (this.quizQuestions.length - 1);
         }
