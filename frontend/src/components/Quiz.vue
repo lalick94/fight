@@ -172,7 +172,7 @@
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-input" style="display:flex;flex-direction: column;margin: 0 auto;" v-if="question.counter === 3">
                   <div><textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea> </div>
-                <div class="but_input">  <button class="button button1" v-if="question.counter === 3">Abschicken </button> </div>
+                <div class="but_input"><button :style="{backgroundColor: active ? '#0b3a19' : '#84d084'}" class="button button1" v-if="question.counter === 3"  @click="handleClick">Abschicken </button> </div>
                 </div>
               </div>
               <div style="display:flex; flex-direction: column;" v-if="question.type === 'SLIDER'">
@@ -238,6 +238,7 @@ export default {
       selectionDesktop: true,
       clockVisible: false,
       selection2CurrentIdx: 0,
+      active: false,
     };
   },
   async mounted() {
@@ -273,6 +274,9 @@ export default {
     }
   },
   methods:{
+    handleClick() {
+      this.active = !this.active;
+    },
     changeSelection2Image(idx) {
       this.selection2CurrentIdx = idx;
     },
@@ -492,7 +496,6 @@ input[type=text] {
   cursor: pointer;
 }
 .button1 {
-  background-color: #84d084;
   width: 145px !important;
 }
 .but_input{
