@@ -157,7 +157,7 @@
                 <div class="answer-list-input" style="display:flex;flex-direction: column;margin: 0 auto;" v-if="question.counter === 3">
                   <div>   <img v-if="question.dependingCustomAnswer && question.dependingCustomAnswer.image" v-bind:src="`images/assets/${question.dependingCustomAnswer.image}`" class="input-field-image"></div>
                     <div>  <textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea></div>
-                  <div class="but_input">  <button class="button button1" v-if="question.counter === 3">Abschicken </button> </div>
+                  <div class="but_input">  <button :style="{backgroundColor: active ? '#0b3a19' : '#84d084'}" class="button button1" @click="handleClick" v-if="question.counter === 3">Abschicken </button> </div>
                 </div>
             </div>
               <div v-if="question.type === 'SLIDER'">
@@ -257,6 +257,7 @@ export default {
       dragDropShowAll: true,
       quizType: '',
       selection2CurrentIdx: 0,
+      active: false,
     };
   },
   async mounted() {
@@ -293,6 +294,9 @@ export default {
     }
   },
   methods:{
+    handleClick() {
+      this.active = !this.active;
+    },
     answerDragDrop(answer) {
       const a = this.quizQuestions[this.page].answers.find(a => a.answer === answer);
       this.pageIncrease(a);
@@ -521,7 +525,6 @@ export default {
   margin: 4px 2px;
   cursor: pointer;
 }
-.button1 {background-color: #84d084;} /* Green */
 .but_input{
   width: 145px;
   margin: 0 auto
