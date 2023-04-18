@@ -1178,7 +1178,7 @@ img{
   }
   .image_quiz_slider{
     height: 100px;
-    width: 100px;
+    width: 367px;
   }
 }
 @media screen and (max-width: 500px) {
