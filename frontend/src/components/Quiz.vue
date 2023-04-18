@@ -939,7 +939,7 @@ img{
   width: 550px;
 }
 .image_quiz_q_dragdrop{
-  height: 250px;
+  height: 215px;
   width: 300px;
   margin: auto;
 }
@@ -949,8 +949,8 @@ img{
   margin: auto;
 }
 .image_quiz_q_dragdrop_rucksack_alarm{
-  height: 250px;
-  width: 270px;
+  height: 203px;
+  width: 240px;
   margin: auto;
 }
 .image_quiz_alarm_dragdrop{

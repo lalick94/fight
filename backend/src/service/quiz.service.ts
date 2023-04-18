@@ -94,12 +94,12 @@ export class QuizService {
         const question: QuizQuestion = await this.repository.findOne({ where: {id: questionId}, relations: {answers: true} });
         const user: User = await this.userRepository.findOneBy({id: token.userId});
         console.log(question.answers);
-        const answer: UserAnswer = await this.userAnswerRepository.findOne({ where: { quizAnswer: {id: In(question.answers.map(a => a.id))}, user: { id: user.id }}, relations: {quizAnswer: true}});
-        console.log(answer);
+        const answers: UserAnswer[] = await this.userAnswerRepository.find({ where: { quizAnswer: {id: In(question.answers.map(a => a.id))}, user: { id: user.id }}, relations: {quizAnswer: true}});
+        console.log(answers);
         return {
-            userAnswerId: answer.id,
-            userAnswer: answer.custom_answer,
-            image: answer.quizAnswer.image
+            userAnswerId: answers[answers.length - 1].id,
+            userAnswer: answers[answers.length - 1].custom_answer,
+            image: answers[answers.length - 1].quizAnswer.image
         };
     }
 
