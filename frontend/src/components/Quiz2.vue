@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div v-if="question.type === 'LESEN'">
-                <div v-if="question.counter === 3 && question.question" class="drag-drop">
+                <div v-if="question.counter === 3 && question.question" class="lesen field">
                   <div class="lesen" style="text-align: center; padding-top: 30px;">
                     <div class="lesen_answers">
                       <div class="answers-lesen-box">
