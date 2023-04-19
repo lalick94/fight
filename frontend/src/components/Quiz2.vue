@@ -149,7 +149,7 @@
                 </div>
               </div>
               <div v-if="question.type === 'INPUT_FIELD'">
-                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p>{{ question.info }}</p> <p style="color: #ff6961;">{{question.dependingCustomAnswer.userAnswer}}</p></div>
+                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p>{{ question.info }}</p> <p style="color: #ff6961;" v-if="question.dependingCustomAnswer.userAnswer">{{question.dependingCustomAnswer.userAnswer}}</p></div>
                 <p class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text_question_instruction" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_inputfield_instruction">
