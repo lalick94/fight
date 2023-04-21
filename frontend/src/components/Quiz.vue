@@ -108,7 +108,7 @@
                 </div>
                 <div class="drag-rucksack">
                   <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image.replace('$', dragDropImgIndex)}`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
-                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${rucksack.replace('$', dragDropImgIndex)}`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
                 </div>
               </div>
               <div v-if="question.type === 'SELECTION'">
