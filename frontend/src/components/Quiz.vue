@@ -939,7 +939,7 @@ img{
   width: 550px;
 }
 .image_quiz_q_dragdrop{
-  height: 215px;
+  height: 263px;
   width: 300px;
   margin: auto;
 }
@@ -1247,7 +1247,7 @@ img{
     width: 150px;
   }
   .image_quiz_q_dragdrop_rucksack{
-    height: 130px;
+    height: 143px;
     width: 170px;
     margin-left: 0px;
   }
