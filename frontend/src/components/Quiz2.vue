@@ -598,8 +598,8 @@ color:  #ff6961;
 }
 .answers-lesen-box{
   width: 100% ;
-  font-size: 20px;
-  padding: 5px;
+  font-size: 35px;
+  padding-top: 170px;
   font-weight: bold;
   color:  #ff6961;
 }
@@ -641,7 +641,6 @@ ul {
   color: black;
 }
 .drag_answers {
-  padding-left: 20px;
   padding-top: 20px;
   font-size:30px;
   color: black;
@@ -762,7 +761,7 @@ a { text-decoration: none; }
 .answer-list-memory{
   margin: 0 auto;
   padding-top: 50px;
- display: flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 50%;
@@ -1304,6 +1303,10 @@ a { text-decoration: none; }
    width: 273px;
    height: 360px;
  }
+  .answers-lesen-box {
+    padding-top: 175px;
+    font-size: 25px;
+  }
 }
 @media screen and (max-width: 375px) {
   .text{
@@ -1311,6 +1314,9 @@ a { text-decoration: none; }
     padding-left: 16px;
     padding-top: 40px;
     padding-bottom: 10px;
+  }
+  .answers-lesen-box{
+    padding-top: 90px;
   }
    .text_selection {
      padding-top: 0px;
