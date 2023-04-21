@@ -154,7 +154,7 @@
                 <p  class="text_question_instruction" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_inputfield_instruction">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
-                <div class="answer-list-input" style="display:flex;flex-direction: column;margin: 0 auto;" v-if="question.counter === 3">
+                <div class="answer-list-input"  v-if="question.counter === 3">
                   <div>   <img v-if="question.dependingCustomAnswer && question.dependingCustomAnswer.image" v-bind:src="`images/assets/${question.dependingCustomAnswer.image}`" class="input-field-image"></div>
                     <div>  <textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea></div>
                   <div class="but_input">  <button :style="{backgroundColor: active ? '#0b3a19' : '#84d084'}" class="button button1" @click="handleClick" v-if="question.counter === 3">Abschicken </button> </div>
