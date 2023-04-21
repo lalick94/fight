@@ -1395,7 +1395,7 @@ a { text-decoration: none; }
     width: 255px;
   }
   .input-field-image {
-    height: 74px;
+    height: 90px;
     width: 75px;
     padding-bottom: 5px;
   }

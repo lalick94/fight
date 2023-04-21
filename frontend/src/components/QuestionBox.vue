@@ -173,15 +173,11 @@ height: 790px;
     padding-bottom: 25px;
   }
   .comic-box{
-    height: 695px;
+    height: 730px;
   }
 
 }
-@media screen and (max-width: 393px) {
-  .comic-box{
-    height: 650px;
-  }
-}
+
 @media screen and (max-width: 375px) {
   .comic-box{
     height: 558px;
