@@ -170,7 +170,7 @@
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz1_input">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
-                <div class="answer-list-input" style="display:flex;flex-direction: column;margin: 0 auto;" v-if="question.counter === 3">
+                <div class="answer-list-input" style="" v-if="question.counter === 3">
                   <div><textarea v-model="question.customAnswer"  id="name" name="name" class="feedback-field" placeholder="Schreib hier etwas..."></textarea> </div>
                 <div class="but_input"><button :style="{backgroundColor: active ? '#0b3a19' : '#84d084'}" class="button button1" v-if="question.counter === 3"  @click="handleClick">Abschicken </button> </div>
                 </div>
