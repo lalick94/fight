@@ -108,7 +108,7 @@
                 </div>
                 <div class="drag-rucksack">
                   <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.question_image.replace('$', dragDropImgIndex)}`" v-if="question.question_image && question.counter === 3" @click="answerDragDrop(true)" >
-                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/rucksack.png`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${'rucksack_$.png'.replace('$', dragDropImgIndex2)}`" v-if="question.question_image !== 'uhr' && question.question_image && question.counter === 3" @click="answerDragDrop(false)" >
                 </div>
               </div>
               <div v-if="question.type === 'SELECTION'">
@@ -232,6 +232,7 @@ export default {
       page: 0,
       progress:0,
       dragDropImgIndex: 1,
+      dragDropImgIndex2: 1,
       dragDropPage: 0,
       selectedDragDropElement: {},
       dragDropShowAll: true,
@@ -296,6 +297,8 @@ export default {
     answerDragDrop(answer) {
       if(answer) {
         this.dragDropImgIndex = 2;
+      } else {
+        this.dragDropImgIndex2 = 2;
       }
       this.quizQuestions[this.page].customAnswer = answer;
       new Promise(resolve => {
@@ -303,6 +306,7 @@ export default {
       }).then(() =>  {
         this.pageIncrease();
         this.dragDropImgIndex = 1;
+        this.dragDropImgIndex2 = 1;
       });
     },
     answerDragDropAlarm() {
@@ -320,9 +324,10 @@ export default {
       }
       console.log("Answer selected");
       this.dragDropImgIndex = 2;
+      this.dragDropImgIndex2 = 2;
       new Promise(resolve => {
         setTimeout(resolve, 500);
-      }).then(() => this.dragDropImgIndex = 1);
+      }).then(() => { this.dragDropImgIndex2 = 1; this.dragDropImgIndex = 1});
       answer.clicked = answer.clicked === undefined ? true : !answer.clicked;
     },
     dragDropNext() {
@@ -347,10 +352,12 @@ export default {
 
       event.preventDefault();
       this.dragDropImgIndex = 2;
+      this.dragDropImgIndex2 = 2;
     },
     dropAnswer(event){
       event.preventDefault();
       this.dragDropImgIndex = 1;
+      this.dragDropImgIndex2 = 1;
       this.quizQuestions[this.page].answers.forEach(a => {
         if(a.id === this.selectedDragDropElement.id){
           a.clicked = true;

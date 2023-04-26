@@ -54,8 +54,8 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
                 <img v-bind:src="`images/assets/${question.instruction_image}_${dragDropImgIndex}.png`" v-if="question.instruction_image && question.counter === 2" class="image_quiz_i_dragdrop">
                 <div class="drag-rucksack"  v-if="question.counter === 3">
-                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${question.drag_drop_false}.png`" @click="answerDragDrop('false')" >
-                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.drag_drop_true}.png`" @click="answerDragDrop('true')" >
+                  <img class="image_quiz_q_dragdrop_rucksack" v-bind:src="`images/assets/${question.drag_drop_false.replace('$', dragDropImgIndex)}`" @click="answerDragDrop(false)" >
+                  <img class="image_quiz_q_dragdrop" v-bind:src="`images/assets/${question.drag_drop_true.replace('$', dragDropImgIndex2)}`" @click="answerDragDrop(true)" >
                 </div>
               </div>
               <div v-if="question.type === 'LESEN'">
@@ -200,7 +200,7 @@
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2">
                 <div class="memory" style="text-align: left;" v-if="question.counter === 3"><p>{{ question.question}}</p> <p>{{question.dependingCustomAnswer}}</p></div>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz2">
-                <div class="answer-list-memory" v-if="question.counter === 3">
+                <div class="answer-list-memory" v-bind:style="question.type === 'MEMORY_2' ? 'width:60%' : ''" v-if="question.counter === 3">
                   <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ flipped: answer.isFlipped }" @click="flipCard(answer)">
                       <div>
                         <div class="back border rounded shadow">
@@ -252,7 +252,8 @@ export default {
       interval: '',
       progress:0,
       time: 20,
-      dragDropImgIndex: 2,
+      dragDropImgIndex: 1,
+      dragDropImgIndex2: 1,
       dragDropPage: 0,
       dragDropShowAll: true,
       quizType: '',
@@ -304,8 +305,19 @@ export default {
       this.active = true;
     },
     answerDragDrop(answer) {
-      const a = this.quizQuestions[this.page].answers.find(a => a.answer === answer);
-      this.pageIncrease(a);
+      if(answer){
+        this.dragDropImgIndex2 = 2;
+      } else {
+        this.dragDropImgIndex = 2;
+      }
+      const a = this.quizQuestions[this.page].answers.find(a => a.answer === '' + answer);
+      new Promise(resolve => {
+        setTimeout(resolve, 500);
+      }).then(() =>  {
+        this.dragDropImgIndex = 1;
+        this.dragDropImgIndex2 = 1;
+        this.pageIncrease(a);
+      });
     },
     changeSelection2Image(idx) {
       this.selection2CurrentIdx = idx;
@@ -348,9 +360,10 @@ export default {
       }
       console.log("Answer selected");
       this.dragDropImgIndex = 1;
+      this.dragDropImgIndex2 = 1;
       new Promise(resolve => {
         setTimeout(resolve, 2000);
-      }).then(() => this.dragDropImgIndex = 2);
+      }).then(() =>  { this.dragDropImgIndex = 2; this.dragDropImgIndex2 = 2; });
       answer.clicked = answer.clicked === undefined ? true : !answer.clicked;
     },
     dragDropNext() {
@@ -375,11 +388,13 @@ export default {
     dragOverImg(event) {
       event.preventDefault();
       this.dragDropImgIndex = 1;
+      this.dragDropImgIndex2 = 1;
     },
     dropAnswer(event){
       event.preventDefault();
       console.log("test");
       this.dragDropImgIndex = 2;
+      this.dragDropImgIndex2 = 2;
     },
     async pageIncrease(dragDropAnswer){
       const question = this.quizQuestions[this.page];
