@@ -1132,7 +1132,7 @@ a { text-decoration: none; }
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 100% !important;
   }
   .answer-list-memory{
     padding-top: 20px;
