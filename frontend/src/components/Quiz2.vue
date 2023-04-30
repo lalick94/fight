@@ -39,7 +39,7 @@
                   </li>
                 </ul>
               </div>
-              <div v-if="question.type === 'DRAG_DROP_2'">
+              <div v-if="question.type === 'DRAG_DROP_2' || question.type === 'DRAG_DROP5'">
                 <div v-if="question.counter === 3 && question.question" class="drag-drop">
                   <div class="drag-drop" style="margin: 0 auto;">
                     <div class="drag_answers">
@@ -256,6 +256,7 @@ export default {
       dragDropImgIndex2: 1,
       dragDropPage: 0,
       dragDropShowAll: true,
+      dragDropTrueAnswerCount: 0,
       quizType: '',
       selection2CurrentIdx: 0,
       active: false,
@@ -307,6 +308,7 @@ export default {
     answerDragDrop(answer) {
       if(answer){
         this.dragDropImgIndex2 = 2;
+        this.dragDropTrueAnswerCount++;
       } else {
         this.dragDropImgIndex = 2;
       }
@@ -415,8 +417,18 @@ export default {
           await this.checkAnswer(question.answers.filter(a => a.selected)[0]);
         }
       }
-      if(question.type === 'DRAG_DROP_2' && question.counter === 3){
-        await this.checkAnswer(dragDropAnswer);
+      if(question.type === 'DRAG_DROP_2' || question.type === 'DRAG_DROP5') {
+        if (question.counter === 3) {
+          await this.checkAnswer(dragDropAnswer);
+          if (this.dragDropTrueAnswerCount >= 5 && question.type === 'DRAG_DROP5') {
+            const index = this.quizQuestions.findIndex(q => q.type !== 'DRAG_DROP5');
+            this.page = index;
+            if (this.quizQuestions[this.page].type === 'SELECTION_2' && this.quizQuestions[this.page].question_category === 'KOGNITIONEN') {
+              this.quizQuestions[this.page].answered = await this.getAnsweredQuestions('KOGNITIONEN');
+            }
+            return;
+          }
+        }
       }
       if(question.counter !== question.subpages){
         question.counter++;
@@ -427,9 +439,6 @@ export default {
         this.page++;
         if(this.quizQuestions[this.page].dependingQuestionId){
           this.quizQuestions[this.page].dependingCustomAnswer = await this.getCustomAnswer(this.quizQuestions[this.page].dependingQuestionId);
-        }
-        if(this.quizQuestions[this.page].type === 'SELECTION_2' && this.quizQuestions[this.page].question_category === 'KOGNITIONEN'){
-          this.quizQuestions[this.page].answered = await this.getAnsweredQuestions('KOGNITIONEN');
         }
       }
     },
@@ -923,7 +932,6 @@ a { text-decoration: none; }
 }
 .image_quiz2_timer{
   height: 300px;
-  width: 250px;
 }
 .timer-counter{
   padding-bottom: 30px;
