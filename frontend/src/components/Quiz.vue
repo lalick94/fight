@@ -160,6 +160,8 @@
                       <i class="fa fa-arrow-right" id="selection-arrow-right" aria-hidden="true" v-if="answer.image && idx === selection2CurrentIdx && idx < question.answers.length - 1" @click="changeSelection2Image(idx + 1)" style="display: table-cell;"></i>
                       </div>
                       </div>
+                      <p v-if="answer.selected" style="color:#ff6961">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
+                      <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Correct!" : ""}}</p>
                   </div>
                 </div>
               </div>
@@ -203,14 +205,16 @@
               <i class="fa fa-arrow-left" id="arrow-left" aria-hidden="true" @click="pageDecrease()" v-if="page > 0 || quizQuestions[page]?.counter > 1"></i>
             </div>
             <div class="progress-bar">
-              <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b>
-              </span>
-              <div class="shell">
-                <div class="bar" :style="{ width: progress + '%' }">
+              <div style="display: flex; flex-direction: row">
+                <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b>
+                </span>
+                <div class="shell">
+                  <div class="bar" :style="{ width: progress + '%' }">
+                  </div>
                 </div>
-                <span style="color: #ff6961; font-size: 0.7em;"> <b>Gesammelte Punkte</b>
-              </span>
               </div>
+              <span style="color: #ff6961; font-size: 0.7em;text-align: left;"> <b>Gesammelte Punkte</b>
+              </span>
             </div>
             <div class="right-arrow">
               <i class="fa fa-arrow-right" id="arrow-right" aria-hidden="true" @click="pageIncrease()" v-if="!(quizQuestions.length - 1 === page && quizQuestions[page]?.counter === quizQuestions[page]?.subpages)"></i>
@@ -425,7 +429,7 @@ export default {
       } else {
        // alert("Answer not correct");
       }
-      if(this.quizQuestions[this.page].type === 'MC'){
+      if(this.quizQuestions[this.page].type === 'MC' || this.quizQuestions[this.page].type === 'SELECTION_2'){
         this.quizQuestions[this.page].isAnswered = true;
         this.quizQuestions[this.page].answers.forEach(a => {
           if (res.answers.some(ca => ca === a.id)) {
@@ -856,14 +860,14 @@ a { text-decoration: none; }
 .progress-bar {
   width: 95%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 #arrow-left{
   padding-left: 20px;
   color: #0B3A19;
   font-size: 40px;
   text-align: left;
-  padding-bottom: 10px;
+  padding-bottom: 21px;
 
 }
 #arrow-right{
@@ -873,7 +877,7 @@ a { text-decoration: none; }
   font-size: 40px;
   text-align: right;
   padding-left: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 21px;
 }
 #selection-arrow-left{
   padding-left: 10px;

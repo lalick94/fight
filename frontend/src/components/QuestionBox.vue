@@ -58,6 +58,7 @@ export default {
 .comic-field{
   text-align: center;
   padding-top: 10px;
+  margin-bottom: 30px;
 }
 
 button{
@@ -90,7 +91,7 @@ p{
   height: auto;
   border-radius:10px;
   position: relative;
-  height: 730px;
+  height: 750px;
 }
 a { text-decoration: none; }
 .fa-info-circle{
