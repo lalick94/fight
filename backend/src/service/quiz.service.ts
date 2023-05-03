@@ -81,7 +81,7 @@ export class QuizService {
         await this.userAnswerRepository.save(userAnswer);
         if(question.type === QuestionType.INPUT_FIELD) {
             return {};
-        } else if (question.type === QuestionType.MC || question.type === QuestionType.DRAG_DROP_2) {
+        } else if (question.type === QuestionType.MC || question.type === QuestionType.DRAG_DROP_2 || question.type === QuestionType.SELECTION_2) {
             return {
                 result: question.answers.some(a => a.id === req.answerId && a.isCorrect),
                 answers: question.answers.filter(a => a.isCorrect).map(a => a.id),

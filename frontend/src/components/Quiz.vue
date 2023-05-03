@@ -136,7 +136,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz1_selection2_instr">
-                <p  class="text_selection" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
+                <p  class="text_selection" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-selection_2" style="text-align: center" v-if="question.counter === 3">
                   <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ selected: answer.selected }" @click="cardSelected(answer)">
@@ -203,10 +203,13 @@
               <i class="fa fa-arrow-left" id="arrow-left" aria-hidden="true" @click="pageDecrease()" v-if="page > 0 || quizQuestions[page]?.counter > 1"></i>
             </div>
             <div class="progress-bar">
-              <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b></span>
+              <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b>
+              </span>
               <div class="shell">
                 <div class="bar" :style="{ width: progress + '%' }">
                 </div>
+                <span style="color: #ff6961; font-size: 0.7em;"> <b>Gesammelte Punkte</b>
+              </span>
               </div>
             </div>
             <div class="right-arrow">
@@ -317,6 +320,7 @@ export default {
     cardSelected(card){
       this.quizQuestions[this.page].answers.forEach(a => a.selected = false);
       card.selected = true;
+      this.checkAnswer(card.answer);
     },
     selectDragDropAnswer(answer) {
       if(this.dragDropShowAll){
