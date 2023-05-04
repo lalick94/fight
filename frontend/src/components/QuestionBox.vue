@@ -91,7 +91,7 @@ p{
   height: auto;
   border-radius:10px;
   position: relative;
-  height: 750px;
+  height: 770px;
 }
 a { text-decoration: none; }
 .fa-info-circle{

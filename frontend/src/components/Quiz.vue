@@ -160,7 +160,7 @@
                       <i class="fa fa-arrow-right" id="selection-arrow-right" aria-hidden="true" v-if="answer.image && idx === selection2CurrentIdx && idx < question.answers.length - 1" @click="changeSelection2Image(idx + 1)" style="display: table-cell;"></i>
                       </div>
                       </div>
-                      <p v-if="answer.selected" style="color:#ff6961">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
+                      <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
                       <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Correct!" : ""}}</p>
                   </div>
                 </div>
@@ -247,6 +247,8 @@ export default {
       clockVisible: false,
       selection2CurrentIdx: 0,
       active: false,
+
+
     };
   },
   async mounted() {
