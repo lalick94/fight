@@ -147,6 +147,8 @@
                       <div class="front rounded" id="answer_selection_containter" v-if="answer.answer !== 'dummy'">
                         <div class="answer_selection" >{{answer.answer}}</div>
                       </div>
+                      <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
+                      <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Correct!" : ""}}</p>
                     </div>
                     <div v-if="!selectionDesktop && answer.image && idx === selection2CurrentIdx" style="display: table; margin-left:auto;
     margin-right:auto;">
@@ -159,9 +161,8 @@
                       <div style="min-width: 37px;">
                       <i class="fa fa-arrow-right" id="selection-arrow-right" aria-hidden="true" v-if="answer.image && idx === selection2CurrentIdx && idx < question.answers.length - 1" @click="changeSelection2Image(idx + 1)" style="display: table-cell;"></i>
                       </div>
-                      </div>
                       <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
-                      <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Correct!" : ""}}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -326,7 +327,7 @@ export default {
     cardSelected(card){
       this.quizQuestions[this.page].answers.forEach(a => a.selected = false);
       card.selected = true;
-      this.checkAnswer(card.answer);
+      this.checkAnswer(card);
     },
     selectDragDropAnswer(answer) {
       if(this.dragDropShowAll){
@@ -386,7 +387,7 @@ export default {
       if(this.quizQuestions[this.page].type === 'DRAG_DROP' && this.quizQuestions[this.page].counter === 3){
         await this.checkAnswer(this.quizQuestions[this.page].answers[0]);
       }
-      if((this.quizQuestions[this.page].type === 'ALARM_DRAG_DROP' || this.quizQuestions[this.page].type === 'SELECTION' || this.quizQuestions[this.page].type === 'SELECTION_2' )&& this.quizQuestions[this.page].counter === 3){
+      if((this.quizQuestions[this.page].type === 'ALARM_DRAG_DROP' || this.quizQuestions[this.page].type === 'SELECTION') && this.quizQuestions[this.page].counter === 3){
         if(this.quizQuestions[this.page].answers && this.quizQuestions[this.page].answers.length && this.quizQuestions[this.page].answers.some(a => a.selected)) {
           await this.checkAnswer(this.quizQuestions[this.page].answers.filter(a => a.selected)[0]);
         }
