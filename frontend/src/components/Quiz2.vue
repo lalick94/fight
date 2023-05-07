@@ -96,7 +96,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
-                <div v-if="question.counter === 2 && question.question_category === 'KOGNITIONEN'" style="text-align: left; padding: 0px 40px;color:#ff6961;">
+                <div v-if="question.counter === 2 && (question.question_category === 'KOGNITIONEN')" style="text-align: left; padding: 0px 40px;color:#ff6961;">
                   <div v-for="(answerQuestion, idx) in question.answered" v-bind:key="idx">
                     <p style="color:#ff6961;">{{answerQuestion.question}}</p>
                   </div>
@@ -149,9 +149,14 @@
                 </div>
               </div>
               <div v-if="question.type === 'INPUT_FIELD'">
-                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p>{{ question.info }}</p> <p style="color: #ff6961;" v-if="question.dependingCustomAnswer.userAnswer">{{question.dependingCustomAnswer.userAnswer}}</p></div>
+                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p>{{ question.info }}</p> <p style="color: #ff6961;" v-if="question?.dependingCustomAnswer?.userAnswer">{{question.dependingCustomAnswer.userAnswer}}</p></div>
                 <p class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text_question_instruction" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
+                <div v-if="question.counter === 2 && (question.question_category === 'SOZIALEUNTERSTUETZUNG')" style="text-align: left; padding: 0px 40px;color:#ff6961;">
+                  <div v-for="(answerQuestion, idx) in question.answered" v-bind:key="idx">
+                    <p style="color:#ff6961;">{{answerQuestion.question}}</p>
+                  </div>
+                </div>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_inputfield_instruction">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
                 <div class="answer-list-input"  v-if="question.counter === 3">
@@ -407,6 +412,10 @@ export default {
           });
         }
       }
+
+      if(question.type === 'INPUT_FIELD' && this.quizQuestions[this.page].question_category === 'SOZIALEUNTERSTUETZUNG' && question.counter === 1){
+        this.quizQuestions[this.page].answered = await this.getAnsweredQuestions('SOZIALEUNTERSTUETZUNG');
+      }
       if(this.quizQuestions[this.page].type.startsWith('MEMORY')) {
         if(this.quizQuestions[this.page].answers.every(a => a.isMatch)) {
           this.progress += 100 / (this.quizQuestions.length - 1);
@@ -423,7 +432,7 @@ export default {
           if (this.dragDropTrueAnswerCount >= 5 && question.type === 'DRAG_DROP5') {
             const index = this.quizQuestions.findIndex(q => q.type !== 'DRAG_DROP5');
             this.page = index;
-            if (this.quizQuestions[this.page].type === 'SELECTION_2' && this.quizQuestions[this.page].question_category === 'KOGNITIONEN') {
+            if (this.quizQuestions[this.page].type === 'SELECTION_2' && (this.quizQuestions[this.page].question_category === 'KOGNITIONEN')) {
               this.quizQuestions[this.page].answered = await this.getAnsweredQuestions('KOGNITIONEN');
             }
             return;

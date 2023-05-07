@@ -68,7 +68,7 @@ export class QuizService {
         }
         let userAnswer = await this.userAnswerRepository.findOne({where: {quizAnswer: {id: In(question.answers.map(a => a.id))}, user}, relations: {quizAnswer: true, user: true}});
         const quizAnswer: QuizAnswer = question.answers.find(a => a.id === req.answerId);
-        if(!userAnswer || (question.type === QuestionType.DRAG_DROP && userAnswer.quizAnswer.id !== req.answerId )) {
+        if(!userAnswer || ([QuestionType.DRAG_DROP, QuestionType.DRAG_DROP_2].includes(question.type) && userAnswer.quizAnswer.id !== req.answerId )) {
             userAnswer = {
                 quizAnswer,
                 user,
