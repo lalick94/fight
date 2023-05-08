@@ -149,14 +149,14 @@
                 </div>
               </div>
               <div v-if="question.type === 'INPUT_FIELD'">
-                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p>{{ question.info }}</p> <p style="color: #ff6961;" v-if="question?.dependingCustomAnswer?.userAnswer">{{question.dependingCustomAnswer.userAnswer}}</p></div>
+                <div  class="text" style="text-align: left;" v-if="question.counter === 1"><p v-html="question.info"></p> <p style="color: #ff6961;" v-if="question?.dependingCustomAnswer?.userAnswer">{{question.dependingCustomAnswer.userAnswer}}</p></div>
                 <p class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text_question_instruction" style="text-align: left;" v-if="question.counter === 2" v-html="question.instruction"></p>
-                <div v-if="question.counter === 2 && (question.question_category === 'SOZIALEUNTERSTUETZUNG')" style="text-align: left; padding: 0px 40px;color:#ff6961;">
+<!--                <div v-if="question.counter === 2 && (question.question_category === 'SOZIALEUNTERSTUETZUNG')" style="text-align: left; padding: 0px 40px;color:#ff6961;">
                   <div v-for="(answerQuestion, idx) in question.answered" v-bind:key="idx">
                     <p style="color:#ff6961;">{{answerQuestion.question}}</p>
                   </div>
-                </div>
+                </div>-->
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_inputfield_instruction">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
                 <div class="answer-list-input"  v-if="question.counter === 3">
@@ -226,11 +226,16 @@
               <i class="fa fa-arrow-left" aria-hidden="true" @click="pageDecrease()" v-if="page > 0 || quizQuestions[page]?.counter > 1"></i>
             </div>
             <div class="progress-bar">
-              <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b></span>
-              <div class="shell">
-                <div class="bar" :style="{ width: progress + '%' }">
+              <div style="display: flex; flex-direction: row">
+                <span class="pbar"> <b>{{ `${Math.round(progress / (100 / (quizQuestions.length - 1))).toFixed(0)} / ${quizQuestions.length - 1}` }}</b>
+                </span>
+                <div class="shell">
+                  <div class="bar" :style="{ width: progress + '%' }">
+                  </div>
                 </div>
               </div>
+              <span style="color: #ff6961; font-size: 0.7em;text-align: left;"> <b>Gesammelte Punkte</b>
+              </span>
             </div>
             <div class="right-arrow">
               <i class="fa fa-arrow-right" aria-hidden="true" @click="pageIncrease()" v-if="!(quizQuestions.length - 1 === page && quizQuestions[page]?.counter === quizQuestions[page]?.subpages)"></i>
@@ -763,14 +768,14 @@ a { text-decoration: none; }
 .progress-bar {
   width: 95%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .fa-arrow-left{
   padding-left: 20px;
   color: #0B3A19;
   font-size: 40px;
   text-align: left;
-  padding-bottom: 10px;
+  padding-bottom: 21px;
 
 }
 .fa-arrow-right{
@@ -780,7 +785,7 @@ a { text-decoration: none; }
   font-size: 40px;
   text-align: right;
   padding-left: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 21px;
 }
 .progress-bar-field{
 
@@ -832,7 +837,7 @@ a { text-decoration: none; }
   font-weight: bold;
 }
 .img_selection {
-  width: 138px;
+  width: 150px;
   height: 180px;
 }
 .memory-img{
@@ -1178,11 +1183,11 @@ a { text-decoration: none; }
     padding-top: 70px;
   }
   .image_quiz_q_dragdrop{
-    height: 130px;
+    height: 150px;
     width: 150px;
   }
   .image_quiz_q_dragdrop_rucksack{
-    height: 130px;
+    height: 150px;
     width: 170px;
     margin-left: 0px;
   }
@@ -1306,11 +1311,11 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 393px) {
   .image_quiz_q_dragdrop{
-    height: 123px;
+    height: 145px;
     width: 141px;
   }
   .image_quiz_q_dragdrop_rucksack{
-    height: 123px;
+    height: 145px;
     width: 155px;
   }
   .answer-list-memory{

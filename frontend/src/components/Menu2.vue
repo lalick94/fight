@@ -41,7 +41,7 @@
         <div class="flex-container" id="flex3">
           <div class="box">
             <router-link :to="{name: 'sozialeunterstuetzung'}">
-              <div class="quiz"><p class="modalname"><b>Soziale Unterstützung</b></p></div>
+              <div class="quiz"><p class="modalname_soziale"><b>Soziale Unterstützung</b></p></div>
             </router-link>
           </div>
           <div class="box">
@@ -127,6 +127,12 @@ button{
   font-family: Arial;
   color: #0B3A19;
 }
+.modalname_soziale{
+  padding-top: 60px;
+  font-size: 30px;
+  font-family: Arial;
+  color: #0B3A19;
+}
 .modalname_erkennen{
   padding-top: 50px;
   font-size: 30px;
@@ -175,6 +181,12 @@ a { text-decoration: none; }
     padding-top: 0px;
   }
 }
+@media (max-width: 500px) {
+  .modalname_soziale{
+    padding-top: 50px;
+  }
+}
+
 @media (max-width: 414px) {
   .quiz{
     height:150px;
@@ -192,6 +204,9 @@ a { text-decoration: none; }
   .modalname{
     padding-top: 50px;
   }
+  .modalname_soziale{
+    padding-top: 50px;
+  }
   .modalname_erkennen{
     padding-top: 10px;
   }
@@ -202,5 +217,9 @@ a { text-decoration: none; }
     margin-bottom: 0px;
   }
 }
-
+@media (max-width: 400px) {
+  .modalname_soziale{
+    padding-top: 25px;
+  }
+}
 </style>

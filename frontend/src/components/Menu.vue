@@ -32,7 +32,7 @@
         </div>
         <div class="box">
           <router-link :to="{name: 'ausfuellen'}">
-          <div class="quiz"><p><b>Eine Frage des Vergleichs</b></p></div>
+          <div class="quiz"><p class="vergleichs"><b>Eine Frage des Vergleichs</b></p></div>
           </router-link>
         </div>
       </div>
@@ -107,6 +107,12 @@ p{
   font-family: Arial;
   color: #0B3A19;
 }
+.vergleichs{
+  padding-top: 60px;
+  font-size: 30px;
+  font-family: Arial;
+  color: #0B3A19;
+}
 .quiz{
   height:200px;
   background-color:#fde396;
@@ -150,6 +156,9 @@ a { text-decoration: none; }
   }
   #flex2{
     padding-top: 0px;
+  }
+  .vergleichs{
+    padding-top: 40px;
   }
 }
 

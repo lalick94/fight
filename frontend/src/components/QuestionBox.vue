@@ -181,7 +181,7 @@ height: 790px;
 
 @media screen and (max-width: 375px) {
   .comic-box{
-    height: 558px;
+    height: 572px;
   }
 
 }

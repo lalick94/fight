@@ -157,11 +157,12 @@
                       </div>
                       <div class="front border rounded shadow" :class="quizType === 'COMIC' ? 'custom_front_2' : ''" style="display: table-cell;" >
                         <img class="img_selection_2" :class="quizType === 'SELBSTDARSTELLUNGONLINE' ? 'custom_img_2' : ''"  v-bind:src="`images/assets/${answer.image}`">
+                        <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
+
                       </div>
                       <div style="min-width: 37px;">
                       <i class="fa fa-arrow-right" id="selection-arrow-right" aria-hidden="true" v-if="answer.image && idx === selection2CurrentIdx && idx < question.answers.length - 1" @click="changeSelection2Image(idx + 1)" style="display: table-cell;"></i>
                       </div>
-                      <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
                     </div>
                   </div>
                 </div>
