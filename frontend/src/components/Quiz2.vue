@@ -96,7 +96,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 1">{{ question.info }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 4">{{ question.explanation }}</p>
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
-                <div v-if="question.counter === 2 && (question.question_category === 'KOGNITIONEN')" style="text-align: left; padding: 0px 40px;color:#ff6961;">
+                <div v-if="question.counter === 2 && (question.question_category === 'KOGNITIONEN')" style="text-align: left; color:#ff6961;padding-left: 40px; padding-bottom:50px;">
                   <div v-for="(answerQuestion, idx) in question.answered" v-bind:key="idx">
                     <p style="color:#ff6961;">{{answerQuestion.question}}</p>
                   </div>
@@ -967,20 +967,36 @@ a { text-decoration: none; }
 .answer-list-memory{
   width: 51%;
 }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
 }
 @media screen and (max-width: 1475px) {
   .answer-list-memory{
     width: 57%;
+  }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
   }
 }
 @media screen and (max-width: 1447px) {
   .answer-list-memory{
     width: 58%;
   }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
 }
 @media screen and (max-width: 1424px) {
   .answer-list-memory{
     width: 60%;
+  }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
   }
 }
 @media screen and (max-width: 930px) {
@@ -1056,7 +1072,10 @@ a { text-decoration: none; }
     padding-left: 25px;
     padding-top:30px;
   }
-
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
 }
 @media screen and (max-width: 820px) {
   .text_question_instruction{
@@ -1079,6 +1098,10 @@ a { text-decoration: none; }
     padding-top: 13px;
     width: 150px;
   }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
 }
 @media screen and (max-width: 820px) {
   .answer-list-selection{
@@ -1095,8 +1118,16 @@ a { text-decoration: none; }
   .selectionDesktop{
     margin-left: 180px;
   }
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
 }
 @media screen and (max-width: 667px) {
+  .img_selection_2 {
+    width: 250px;
+    height: 375px;
+  }
   .menu_text{
     font-weight: 900;
   }
