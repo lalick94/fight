@@ -139,25 +139,25 @@
                 <p  class="text_selection" style="text-align: left;" v-if="question.counter === 3" v-html="question.question"></p>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-selection_2" style="text-align: center" v-if="question.counter === 3">
-                  <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ selected: answer.selected }" @click="cardSelected(answer)">
-                    <div v-if="selectionDesktop">
+                  <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ selected: answer.selected }">
+                    <div v-if="selectionDesktop" @click="cardSelected(answer)">
                       <div class="front border rounded shadow" :class="quizType === 'COMIC' ? 'custom_front' : ''" v-if="answer.image">
                         <img class="img_selection" :class="quizType === 'SELBSTDARSTELLUNGONLINE' ? 'custom_img' : ''"  v-bind:src="`images/assets/${answer.image}`">
                       </div>
                       <div class="front rounded" id="answer_selection_containter" v-if="answer.answer !== 'dummy'">
                         <div class="answer_selection" >{{answer.answer}}</div>
                       </div>
-                      <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
-                      <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Correct!" : ""}}</p>
+                      <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Korrekt!" : "Nicht korrekt!"}}</p>
+                      <p v-if="!answer.selected" style="color: #84d084">{{answer.correct ? "Korrekt!" : ""}}</p>
                     </div>
                     <div v-if="!selectionDesktop && answer.image && idx === selection2CurrentIdx" style="display: table; margin-left:auto;
     margin-right:auto;">
                       <div style="min-width: 37px;">
                         <i class="fa fa-arrow-left" id="selection-arrow-left" aria-hidden="true" v-if="answer.image && idx === selection2CurrentIdx && idx !== 0" @click="changeSelection2Image(idx - 1)" style="display: table-cell;"></i>
                       </div>
-                      <div class="front border rounded shadow" :class="quizType === 'COMIC' ? 'custom_front_2' : ''" style="display: table-cell;" >
+                      <div class="front border rounded shadow" :class="quizType === 'COMIC' ? 'custom_front_2' : ''" style="display: table-cell;" @click="cardSelected(answer)" >
                         <img class="img_selection_2" :class="quizType === 'SELBSTDARSTELLUNGONLINE' ? 'custom_img_2' : ''"  v-bind:src="`images/assets/${answer.image}`">
-                        <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Correct!" : "Nicht correct!"}}</p>
+                        <p v-if="answer.selected" :style="{color: answer.correct? '#84d084' : '#ff6961'}">{{answer.correct ? "Korrekt!" : "Nicht korrekt!"}}</p>
 
                       </div>
                       <div style="min-width: 37px;">
@@ -192,7 +192,7 @@
                 </div>
                 <div class="image_quiz_slider" v-if="question.left_slider && question.counter === 3" id="toptext">
                   <p style="padding-left: 10px;width:50%;text-align:left;">{{question.left_slider}}</p>
-                  <p style="padding-right: 10px;width:50%;text-align: right;">{{question.right_slider}}</p>
+                  <p style="width:50%;text-align: right;" class="slider_right">{{question.right_slider}}</p>
                 </div>
                 <div class="image_quiz_slider" v-if="question.question_image && question.counter === 3" >
                   <img v-bind:src="`images/assets/${quizQuestions.find(q => q.id === question.dependingQuestionId).question_image}`" v-if="question.dependingCustomAnswer" v-bind:height="50 * question.dependingCustomAnswer" v-bind:width="20 * question.dependingCustomAnswer" class="image_quiz_slider_init">
@@ -505,6 +505,9 @@ input[type=text] {
 
 .menu-header{
   text-align: right;
+}
+.slider_right{
+  padding-right: 10px;
 }
 .button {
   border: none;
@@ -1002,6 +1005,18 @@ img{
   height: 350px;
   width: 500px;
 }
+@media screen and (max-width: 1477px) {
+
+.img_selection_2{
+  width: 325px;
+  height: 435px;
+}
+  .answer-list-selection_2{
+    padding-left: 380px;
+    padding-top: 35px;
+  }
+
+}
 @media screen and (max-width: 1200px){
   .text{
     font-size: 20px;
@@ -1285,8 +1300,14 @@ img{
   .alarm_input {
     width: 200px;
   }
+  .slider_right{
+    padding-right: 10px;
+  }
 }
 @media screen and (max-width: 414px) {
+  .slider_right{
+    padding-right: 20px;
+  }
   .image_quiz_mc{
     height: 265px;
     width: 200px;
@@ -1380,12 +1401,18 @@ img{
     height: 210px;
     width: 265px;
   }
+  .slider_right{
+    padding-right: 40px;
+  }
 }
 @media screen and (max-width: 375px) {
   .image_quiz_mc{
     height: 166px;
     width: 132px;
     padding-top: 0px;
+  }
+  .slider_right{
+    padding-right: 50px;
   }
   .image_quiz1_selection2_instr{
     height: 235px;

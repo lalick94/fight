@@ -88,10 +88,10 @@ p{
   border: 5px solid #0B3A19;
   padding: 10px;
   background-color: white;
-  height: auto;
+  height: auto !important;
+  min-height: 700px;
   border-radius:10px;
   position: relative;
-  height: 770px;
 }
 a { text-decoration: none; }
 .fa-info-circle{
@@ -181,14 +181,14 @@ height: 790px;
 
 @media screen and (max-width: 375px) {
   .comic-box{
-    height: 572px;
+    height: 613px;
   }
 
 }
 
 @media screen and (max-width: 360px) {
   .comic-box{
-    height: 540px;
+    height: 590px;
   }
 }
 

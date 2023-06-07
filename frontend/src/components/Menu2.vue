@@ -181,6 +181,11 @@ a { text-decoration: none; }
     padding-top: 0px;
   }
 }
+@media (max-width: 1417px) {
+  .modalname_erkennen{
+    padding-top: 15px;
+  }
+}
 @media (max-width: 500px) {
   .modalname_soziale{
     padding-top: 50px;
@@ -209,6 +214,7 @@ a { text-decoration: none; }
   }
   .modalname_erkennen{
     padding-top: 10px;
+    font-size: 27px;
   }
   .selbst-modalname{
     padding-top: 40px;

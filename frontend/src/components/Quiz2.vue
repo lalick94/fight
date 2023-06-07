@@ -195,7 +195,7 @@
                 <p  class="text" style="text-align: left;" v-if="question.counter === 2">{{ question.instruction }}</p>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2">
                 <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
-                <p v-if="question.counter === 3" class="timer-counter">You have <span style="color:#ff6961; font-weight: bold;"> {{time}} </span> seconds</p>
+                <p v-if="question.counter === 3" class="timer-counter">Du hast <span style="color:#ff6961; font-weight: bold;"> {{time}} </span> Sekunden.</p>
                 <img v-bind:src="`images/assets/${question.question_image}.png`" v-if="question.question_image && question.counter === 3" class="image_quiz2_timer">
               </div>
               <div v-if="question.type.startsWith('MEMORY')">
@@ -216,7 +216,7 @@
                         </div>
                       </div>
                   </div>
-                  <span class="memory_congr" v-if="question.answers.every(a => a.isMatch)"><b>Congratulation you found all cards</b></span>
+                  <span class="memory_congr" v-if="question.answers.every(a => a.isMatch)"><b>Gratuliere, du hast alle Kartenpaare gefunden!</b></span>
                 </div>
               </div>
             </div>
@@ -963,6 +963,26 @@ a { text-decoration: none; }
   width: 250px;
   height: 250px;
 }
+@media screen and (max-width: 1649px) {
+.answer-list-memory{
+  width: 51%;
+}
+}
+@media screen and (max-width: 1475px) {
+  .answer-list-memory{
+    width: 57%;
+  }
+}
+@media screen and (max-width: 1447px) {
+  .answer-list-memory{
+    width: 58%;
+  }
+}
+@media screen and (max-width: 1424px) {
+  .answer-list-memory{
+    width: 60%;
+  }
+}
 @media screen and (max-width: 930px) {
   .fa-arrow-left{
     font-size:26px;
@@ -1350,7 +1370,7 @@ a { text-decoration: none; }
     font-size: 15px;
     padding-left: 16px;
     padding-top: 40px;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
   }
   .answers-lesen-box{
     padding-top: 90px;
@@ -1362,7 +1382,7 @@ a { text-decoration: none; }
     font-size: 15px;
     padding-left: 16px;
     padding-top: 40px;
-    padding-bottom: 25px;
+    padding-bottom: 35px;
   }
   .image_quiz2_input_instruction{
     height: 345px;
@@ -1407,7 +1427,7 @@ a { text-decoration: none; }
   }
   .answer-list-selection{
     padding-left: 15px;
-    padding-top:0px;
+    padding-top: 25px;
   }
   .flip-container .answer_selection{
     font-size: 12px;
