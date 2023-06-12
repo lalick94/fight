@@ -525,6 +525,9 @@ export default {
 }
 </script>
 <style scoped>
+.answer-list-input{
+  margin-bottom: 55px;
+}
 #toptext {
   display: flex;
   justify-content: space-between;

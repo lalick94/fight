@@ -468,7 +468,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.answer-list-input{
+  margin-bottom: 55px;
+}
 input[type=text] {
   border: 2px solid red;
   border-radius: 4px;
@@ -571,12 +573,13 @@ input[type=text] {
   width: 100%;
 }
 .answer-list-selection_2{
-  padding-left: 160px;
+  padding-left: 200px;
   padding-top: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  padding-bottom: 70px;
 }
 .answer-list-alarm-drag{
   padding-top: 40px;
@@ -607,7 +610,7 @@ input[type=text] {
   font-weight: bold;
 }
 .img_selection {
-  width: 335px;
+  width: 290px;
   height: 465px;
 }
 
@@ -1008,8 +1011,8 @@ img{
 @media screen and (max-width: 1477px) {
 
 .img_selection_2{
-  width: 325px;
-  height: 435px;
+  width: 305px;
+  height: 410px;
 }
   .answer-list-selection_2{
     padding-left: 380px;
@@ -1112,6 +1115,9 @@ img{
   .image_quiz1_input{
     height: 410px;
     width: 545px;
+  }
+  .answer-list-selection_2{
+    padding-left: 348px;
   }
 }
 @media only screen and (max-width: 700px) {

@@ -92,6 +92,7 @@ p{
   min-height: 700px;
   border-radius:10px;
   position: relative;
+
 }
 a { text-decoration: none; }
 .fa-info-circle{
