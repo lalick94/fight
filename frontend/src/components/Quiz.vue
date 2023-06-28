@@ -328,6 +328,11 @@ export default {
     cardSelected(card){
       this.quizQuestions[this.page].answers.forEach(a => a.selected = false);
       card.selected = true;
+      if(this.quizQuestions[this.page].selectedCount){
+        this.quizQuestions[this.page].selectedCount++;
+      } else {
+        this.quizQuestions[this.page].selectedCount = 1;
+      }
       this.checkAnswer(card);
     },
     selectDragDropAnswer(answer) {
@@ -388,7 +393,7 @@ export default {
       if(this.quizQuestions[this.page].type === 'DRAG_DROP' && this.quizQuestions[this.page].counter === 3){
         await this.checkAnswer(this.quizQuestions[this.page].answers[0]);
       }
-      if((this.quizQuestions[this.page].type === 'ALARM_DRAG_DROP' || this.quizQuestions[this.page].type === 'SELECTION') && this.quizQuestions[this.page].counter === 3){
+      if((this.quizQuestions[this.page].type === 'SELECTION') && this.quizQuestions[this.page].counter === 3){
         if(this.quizQuestions[this.page].answers && this.quizQuestions[this.page].answers.length && this.quizQuestions[this.page].answers.some(a => a.selected)) {
           await this.checkAnswer(this.quizQuestions[this.page].answers.filter(a => a.selected)[0]);
         }
@@ -433,7 +438,12 @@ export default {
       } else {
        // alert("Answer not correct");
       }
-      if(this.quizQuestions[this.page].type === 'MC' || this.quizQuestions[this.page].type === 'SELECTION_2'){
+      if(this.quizQuestions[this.page].type === 'ALARM_DRAG_DROP'){
+        if(this.quizQuestions[this.page].selectedCount === 3){
+          this.progress += 100 / (this.quizQuestions.length - 1);
+          this.page++;
+        }
+      } else if(this.quizQuestions[this.page].type === 'MC' || this.quizQuestions[this.page].type === 'SELECTION_2'){
         this.quizQuestions[this.page].isAnswered = true;
         this.quizQuestions[this.page].answers.forEach(a => {
           if (res.answers.some(ca => ca === a.id)) {
