@@ -452,6 +452,7 @@ export default {
             a.correct = false;
           } else {
             a.correct = undefined;
+
           }
         });
         if(res.result){
