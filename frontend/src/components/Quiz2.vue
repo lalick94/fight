@@ -1153,6 +1153,7 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 667px) {
   .img_selection_2 {
+
     width: 250px;
     height: 375px;
   }
