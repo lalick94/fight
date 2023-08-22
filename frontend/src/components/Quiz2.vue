@@ -102,7 +102,7 @@
                   </div>
                 </div>
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2_selection2_instruction">
-                <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>
+<!--                <p  class="text" style="text-align: left;" v-if="question.counter === 3">{{ question.question}}</p>-->
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz">
                 <div class="answer-list-selection-2" style="text-align: center" v-if="question.counter === 3">
                   <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ selected: answer.selected }" @click="cardSelected(answer)">
@@ -205,7 +205,7 @@
                 <img v-bind:src="`images/assets/${question.instruction_image}`" v-if="question.instruction_image && question.counter === 2" class="image_quiz2">
                 <div class="memory" style="text-align: left;" v-if="question.counter === 3"><p>{{ question.question}}</p> <p>{{question.dependingCustomAnswer}}</p></div>
                 <img v-bind:src="`images/assets/${question.question_image}`" v-if="question.question_image && question.counter === 3" class="image_quiz2">
-                <div class="answer-list-memory" v-bind:style="question.type === 'MEMORY_2' ? 'width:60%' : ''" v-if="question.counter === 3">
+                <div class="answer-list-memory" v-bind:style="question.type === 'MEMORY_2' ? 'width:70%' : ''" v-if="question.counter === 3">
                   <div v-for="(answer, idx) in question.answers" v-bind:key="idx" class="flip-container" :class="{ flipped: answer.isFlipped }" @click="flipCard(answer)">
                       <div>
                         <div class="back border rounded shadow">
@@ -774,7 +774,7 @@ a { text-decoration: none; }
   flex-direction: column;
 }
 .fa-arrow-left{
-  padding-left: 20px;
+  padding-left: 0px;
   color: #0B3A19;
   font-size: 40px;
   text-align: left;
@@ -783,7 +783,7 @@ a { text-decoration: none; }
 }
 .fa-arrow-right{
   display: inline-block;
-  padding-right: 40px;
+  padding-right: 17px;
   color: #0B3A19;
   font-size: 40px;
   text-align: right;
@@ -817,11 +817,12 @@ a { text-decoration: none; }
 }
 .answer-list-selection-2{
   margin: 0 auto;
-  padding-top: 10px;
+  padding-top: 40px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 70%;
+  width: 75%;
 }
 .flip-container{
   -webkit-perspective: 1000;
@@ -968,7 +969,7 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 1649px) {
 .answer-list-memory{
-  width: 51%;
+  width: 56%;
 }
   .img_selection_2 {
     width: 250px;
@@ -1105,8 +1106,12 @@ a { text-decoration: none; }
     width: 250px;
     height: 375px;
   }
+
 }
 @media screen and (max-width: 820px) {
+  .answer-list-memory{
+
+  }
   .answer-list-selection{
     padding-left:100px;
   }
@@ -1124,6 +1129,26 @@ a { text-decoration: none; }
   .img_selection_2 {
     width: 250px;
     height: 375px;
+  }
+  .answer-list-selection-2{
+    padding-top: 160px;
+  }
+  .input-field-image {
+ margin-left: 230px;
+    margin-bottom: 10px;
+
+  }
+  }
+@media screen and (max-width: 768px) {
+  .img_selection_2{
+    width: 335px;
+    height: 375px;
+  }
+  .answer-list-memory{
+    width: 75%;
+  }
+  .flip-container .img_selection {
+    height: 216px;
   }
 }
 @media screen and (max-width: 667px) {
@@ -1230,6 +1255,9 @@ a { text-decoration: none; }
   .menu-header{
     padding-top: 10px;
   }
+  .answer-list-memory{
+    padding-left: 0px;
+  }
 }
 @media only screen and (max-width: 500px) {
   .drag-rucksack{
@@ -1248,7 +1276,7 @@ a { text-decoration: none; }
   .answer-list-selection-2{
     display: block;
     padding-left: 0px;
-    padding-top: 60px;
+    padding-top: 90px;
     margin: 0 auto;
     height: 254px;
   }
@@ -1332,8 +1360,8 @@ a { text-decoration: none; }
     padding-top: 0px;
   }
   .custom_img_2 {
-    width: 295px;
-    height: 375px;
+    width: 287px;
+    height: 308px;
   }
 }
 @media screen and (max-width: 414px) {
@@ -1341,8 +1369,8 @@ a { text-decoration: none; }
     font-size: 15px;
   }
   .image_quiz2_timer{
-    height: 350px;
-    width: 300px;
+    height: 305px;
+    width: 264px;
   }
   .feedback-field{
     height: 350px;
@@ -1362,6 +1390,7 @@ a { text-decoration: none; }
     height: 247px;
     width: 220px;
   }
+
 }
 @media screen and (max-width: 393px) {
   .image_quiz_q_dragdrop{
@@ -1398,6 +1427,7 @@ a { text-decoration: none; }
     padding-top: 175px;
     font-size: 25px;
   }
+
 }
 @media screen and (max-width: 375px) {
   .text{
@@ -1422,10 +1452,9 @@ a { text-decoration: none; }
     height: 345px;
     width: 550px;
   }
-  .feedback-field{
+  .feedback-field {
     width: 100%;
     height: 250px;
-
   }
   .custom_img_2 {
     width: 200px;
@@ -1447,10 +1476,10 @@ a { text-decoration: none; }
     padding-bottom: 30px;
   }
   .answer-list-memory{
-    padding-top: 15px;
+    padding-top: 50px;
   }
   .answer-list-selection-2{
-    padding-top: 15px;
+    padding-top: 100px;
   }
   .selectionDesktop{
     margin-left: 15px;
@@ -1498,7 +1527,7 @@ a { text-decoration: none; }
   }
   .img_selection_2{
     width: 222px;
-    height: 320px;
+    height: 260px;
   }
 }
 @media screen and (max-width: 360px) {

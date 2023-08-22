@@ -213,7 +213,7 @@ a { text-decoration: none; }
     padding-top: 50px;
   }
   .modalname_erkennen{
-    padding-top: 10px;
+    padding-top: 30px;
     font-size: 27px;
   }
   .selbst-modalname{
@@ -226,6 +226,9 @@ a { text-decoration: none; }
 @media (max-width: 400px) {
   .modalname_soziale{
     padding-top: 25px;
+  }
+  .modalname_erkennen{
+    padding-top: 10px;
   }
 }
 </style>

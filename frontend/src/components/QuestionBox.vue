@@ -130,7 +130,7 @@ a { text-decoration: none; }
   }
 @media screen and (max-width: 1200px){
   .comic-box{
-    height: 550px;
+    min-height: 950px;
   }
 }
 @media screen and (max-width: 896px) {
@@ -147,7 +147,7 @@ a { text-decoration: none; }
     padding-top: 25px;
   }
   .comic-box{
-    height: 925px;
+    min-height: 925px;
   }
   p{
     font-size: 22px;
@@ -156,7 +156,7 @@ a { text-decoration: none; }
 }
 @media screen and (max-width: 770px){
   .comic-box{
-height: 790px;
+ min-height: 790px;
   }
 }
 
@@ -175,21 +175,21 @@ height: 790px;
     padding-bottom: 25px;
   }
   .comic-box{
-    height: 730px;
+    min-height: 730px;
   }
 
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 376px) {
   .comic-box{
-    height: 613px;
+    min-height: 600px;
   }
 
 }
 
 @media screen and (max-width: 360px) {
   .comic-box{
-    height: 590px;
+    min-height: 590px;
   }
 }
 
